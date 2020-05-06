@@ -1,0 +1,10 @@
+@font-face {
+  font-family: SourceSansPro;
+  src: url(/fonts/SourceSansPro-Bold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url(/fonts/SourceSansPro-Regular.otf);
+}

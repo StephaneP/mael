@@ -1,0 +1,24 @@
+@import 'reset.css';
+@import 'variables.css';
+@import 'fonts.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  background-image: url(/images/graphy-dark.png);
+  color: var(--text);
+  font-family: SourceSansPro, Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+em {
+  font-weight: bold;
+}

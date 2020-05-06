@@ -1,0 +1,6 @@
+.card {
+  background-color: var(--background);
+  border-radius: var(--border-radius-outer);
+  padding: 20px;
+  text-align: center;
+}

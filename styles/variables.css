@@ -1,0 +1,20 @@
+:root {
+  --background: #43444D;
+  --foreground: #18191C;
+  --dark: #0B0D0E;
+  --light-grey: #45464F;
+  --mid-grey: #363639;
+  --input-bg: #26272B;
+  --blue: #1648FF;
+  --red: #FD015D;
+  --yellow: #FFBE26;
+  --text: #FFFFFF;
+  --link: #FFFFFF;
+
+  --border-radius-outer: 2em;
+  --border-radius-inner: 2.5em;
+
+  --linkedin-blue: #2867B2;
+  --github-grey: #f6f8fa;
+  --email: #FFBE26;
+}

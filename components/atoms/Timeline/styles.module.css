@@ -1,0 +1,63 @@
+.container {
+  position: relative;
+  padding: 16px;
+}
+
+.leftLine {
+  border-right: 2px solid var(--background);
+  left: 32px;
+  position: absolute;
+  top: 16px;
+  height: calc(100% - 32px);
+}
+
+.itemsContainer {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.item {
+  margin-bottom: 8px;
+  will-change: font-size;
+  transition: font-size 0.2s;
+}
+
+.item:hover {
+  font-size: 1.5em;
+}
+
+.item:hover .circle {
+  height: 64px;
+  width: 64px;
+  margin-left: -16px;
+}
+
+.item:hover .description {
+  margin-left: 64px;
+}
+
+.circleAndTitle {
+  align-items: center;
+  display: flex;
+}
+
+.circle {
+  background-color: var(--background);
+  border-radius: 9999px;
+  height: 32px;
+  width: 32px;
+  will-change: height, width, margin-left;
+  transition: height 0.2s, width 0.2s, margin-left 0.2s;
+}
+
+.title {
+  flex: 1;
+  margin-left: 8px;
+}
+
+.description {
+  margin-left: 48px;
+  will-change: margin-left;
+  transition: margin-left 0.2s;
+}

@@ -1,0 +1,28 @@
+.card {
+  background-color: var(--foreground);
+  border-radius: var(--border-radius-outer);
+  width: 300px;
+  margin: 10px auto 0px auto;
+}
+
+.cardImage {
+  background-color: var(--red);
+  border: 20px solid var(--foreground);
+  border-radius: var(--border-radius-inner) var(--border-radius-inner) var(--border-radius-inner) 2em;
+  display: block;
+  height: 300px;
+  width: 300px;
+}
+
+.content {
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
