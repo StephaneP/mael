@@ -13,8 +13,18 @@ export default function PostsPage() {
   const filteredPages = useMemo(() => router.query.tag ? postsPages.filter((t) => t.tags.includes(router.query.tag as string)) : postsPages, [postsPages, tags, router.query])
   return (
     <>
+    <div className={styles.headerContainer}>
+    <PageWrapper>
+      <div>
+        <Link href='/'><a><div className={styles.back}>Back</div></a></Link>
+        <div className={styles.header}>
+          Posts
+        </div>
+      </div>
+    </PageWrapper>
+    </div>
+    <div className={styles.content}>
         <PageWrapper>
-          <div className={styles.content}>
           <div className={styles.tagContainer}>
           {tags.map((t) => <div key={t} className={router.query.tag === t ? styles.activeTag : styles.tag} onClick={() => {
             router.push(`${router.pathname}${router.query.tag === t ? '' : `?tag=${t}`}`, undefined, {shallow: true});
@@ -25,16 +35,20 @@ export default function PostsPage() {
               <Card key={page.__resourcePath}>
                 <Link href={page.slug}>
                   <a title={page.title}>
-                    <div>{page.title}</div>
-                    <div>{page.datetime}</div>
-                    <div>{page.readingTime.text}</div>
+                  <div className={styles.card}>
+                    <div className={styles.cardTop}>
+                      <div className={styles.cardReadingTime}>{page.readingTime.text}</div>
+                      <div className={styles.cardDatetime}>{page.datetime}</div>
+                    </div>
+                    <div className={styles.cardTitle}>{page.title}</div>
+                  </div>
                   </a>
                 </Link>
               </Card>
             ))}
           </CardContainer>
-          </div>
         </PageWrapper>
+          </div>
     </>
   )
 }

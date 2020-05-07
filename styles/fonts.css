@@ -8,3 +8,9 @@
   font-family: SourceSansPro;
   src: url(/fonts/SourceSansPro-Regular.otf);
 }
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url(/fonts/SourceSansPro-SemiBold.otf);
+  font-weight: 600;
+}

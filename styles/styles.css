@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--code-bg);
   background-image: url(/images/graphy-dark.png);
   color: var(--text);
   font-family: SourceSansPro, Arial, Helvetica, sans-serif;
@@ -24,7 +24,10 @@ h1, h2, h3, h4, h5, h6, em {
 }
 
 ol, ul {
-  padding: 5px;
+  padding: 5px 25px;
   list-style-type: square;
-  list-style-position: inside;
+}
+
+li {
+  padding: 2px 0px;
 }

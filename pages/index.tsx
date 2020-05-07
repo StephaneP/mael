@@ -20,9 +20,13 @@ export default function IndexPage() {
               <Card key={page.__resourcePath}>
                 <Link href={page.slug}>
                   <a title={page.title}>
-                    <div>{page.title}</div>
-                    <div>{page.datetime}</div>
-                    <div>{page.readingTime.text}</div>
+                    <div className={styles.card}>
+                      <div className={styles.cardTop}>
+                        <div className={styles.cardReadingTime}>{page.readingTime.text}</div>
+                        <div className={styles.cardDatetime}>{page.datetime}</div>
+                      </div>
+                      <div className={styles.cardTitle}>{page.title}</div>
+                    </div>
                   </a>
                 </Link>
               </Card>

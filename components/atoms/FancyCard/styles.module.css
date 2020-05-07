@@ -6,7 +6,9 @@
 }
 
 .cardImage {
-  background-color: var(--red);
+  background-image: url(/images/me.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 20px solid var(--foreground);
   border-radius: var(--border-radius-inner) var(--border-radius-inner) var(--border-radius-inner) 2em;
   display: block;
