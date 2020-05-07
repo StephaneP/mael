@@ -1,4 +1,4 @@
-interface FrontMatter {
+export interface FrontMatter {
   __resourcePath: string;
   slug: string;
   domain: string;
@@ -11,10 +11,4 @@ interface FrontMatter {
     time: number;
     words: number;
   }
-}
-
-declare module '*.mdx' {
-  let MDXComponent: (props: any) => JSX.Element
-  export default MDXComponent
-  export const frontMatter: FrontMatter[];
 }

@@ -2,9 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import {NextSeo} from 'next-seo';
 import PageWrapper from '../components/atoms/PageWrapper'
+import {FrontMatter} from '../types';
 import styles from '../styles/layouts/blogPost.module.css'
 
-export default frontMatter => {
+export default (frontMatter: FrontMatter) => {
   return ({ children: content }) => {
     return (
       <div>
@@ -13,8 +14,10 @@ export default frontMatter => {
         </Head>
         <NextSeo
           title={`Matt Elphick | ${frontMatter.title}`}
+          canonical={`${frontMatter.domain}${frontMatter.slug}`}
           openGraph={{
-            title: `Matt Elphick | ${frontMatter.title}`
+            title: `Matt Elphick | ${frontMatter.title}`,
+            url: `${frontMatter.domain}${frontMatter.slug}`
           }}
         />
         <div className={styles.header}>

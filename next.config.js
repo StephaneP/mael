@@ -3,6 +3,7 @@ const mdxPrism = require('mdx-prism')
 const withMdxEnhanced = require('next-mdx-enhanced')
 const PrebuildWebpackPlugin = require('prebuild-webpack-plugin')
 const syncExtractFrontMatter = require('./next-mdx-enhanced-fixes/syncExtractFrontMatter')
+const {canonical: seoUrl} = require('./next-seo.config');
 
 const mdxOptions = {
   layoutPath: 'layouts',
@@ -18,7 +19,9 @@ const mdxOptions = {
     process: (mdxContent, frontMatter) => {
       return ({
         wordCount: mdxContent.split(/\s+/gu).length,
-        readingTime: readingTime(mdxContent)
+        readingTime: readingTime(mdxContent),
+        slug: `/${frontMatter.__resourcePath.replace(/\.mdx$/, "")}`,
+        domain: process.env.NODE_ENV === 'production' ? seoUrl : 'http://localhost:3000'
       })
     }
   }

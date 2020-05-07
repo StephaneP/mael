@@ -2,7 +2,7 @@ const title = 'Matt Elphick | Software Engineer';
 const description = 'Software engineer mainly messing around with JavaScript.';
 const url = 'https://mael.maael.now.sh/';
 
-export default {
+module.exports = {
   title,
   description,
   canonical: url,

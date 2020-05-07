@@ -18,7 +18,7 @@ export default function IndexPage() {
           <CardContainer>
             {postsPages.map((page) => (
               <Card key={page.__resourcePath}>
-                <Link href={formatPath(page.__resourcePath)}>
+                <Link href={page.slug}>
                   <a title={page.title}>
                     <div>{page.title}</div>
                     <div>{page.datetime}</div>
@@ -48,8 +48,4 @@ export default function IndexPage() {
       </main>
     </>
   );
-}
-
-function formatPath(p) {
-  return p.replace(/\.mdx$/, "");
 }
