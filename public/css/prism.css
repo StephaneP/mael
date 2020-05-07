@@ -196,6 +196,7 @@ pre[data-line] .line-highlight[data-end]:after {
   background-color: #2a2a2a;
   text-align: center;
   border-radius: 4px;
-  padding: 15px;
+	padding: 10px;
+	display: inline-block;
   margin: 5px 0px;
 }

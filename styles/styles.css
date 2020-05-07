@@ -19,6 +19,12 @@ a {
   font-weight: bold;
 }
 
-em {
+h1, h2, h3, h4, h5, h6, em {
   font-weight: bold;
+}
+
+ol, ul {
+  padding: 5px;
+  list-style-type: square;
+  list-style-position: inside;
 }

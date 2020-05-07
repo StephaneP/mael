@@ -1,0 +1,19 @@
+.header {
+  background-color: var(--foreground);
+  padding: 10px 5px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.time {
+  font-size: 20px;
+}
+
+.content {
+  background-color: var(--foreground);
+  margin-top: 10px;
+  padding: 10px;
+}

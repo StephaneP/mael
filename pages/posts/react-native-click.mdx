@@ -1,8 +1,20 @@
 ---
-layout: 'docs-page'
+layout: 'BlogPost'
 title: 'React Native Click'
 datetime: '05/05/20 20:55'
 ---
+
+So here's the story of how I lost a few hours of my life figuring out some issues with some tests.
+
+Outline:
+
+- Explanation of background and discovery of problem
+- Explanation of investigation and discovery of react-native-web problem
+- Anatomy of a click
+- Work around decided on at the time
+- Conclude that @testing-library/user-event is best
+
+# Why
 
 Here's some *markdown* content!
 
@@ -14,15 +26,4 @@ function click () {
   const test = 32;
   const what = 'what';
 }
-```
-
-```js:what
-function click () {
-  console.info('click');
-  const test = 32;
-  const what = 'what';
-}
-
-// Hey
-click();
 ```

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import FancyCard from "../components/atoms/FancyCard";
 import Socials from "../components/atoms/Socials";
@@ -11,15 +12,20 @@ import styles from "../styles/index.module.css";
 export default function IndexPage() {
   return (
     <>
+      <Head>
+        <title>Matthew Elphick</title>
+        <meta name="description" content="Matthew Elphick's personal site." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <FancyCard />
       <Socials />
-      <div className={styles.bottom}>
+      <main className={styles.bottom}>
         <PageWrapper>
           <CardContainer>
             {postsPages.map((page) => (
               <Card key={page.__resourcePath}>
                 <Link href={formatPath(page.__resourcePath)}>
-                  <a>
+                  <a title={page.title}>
                     <div>{page.title}</div>
                     <div>{page.datetime}</div>
                     <div>{page.readingTime.text}</div>
@@ -45,7 +51,7 @@ export default function IndexPage() {
             ]}
           />
         </PageWrapper>
-      </div>
+      </main>
     </>
   );
 }
