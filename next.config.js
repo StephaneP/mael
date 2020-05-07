@@ -11,6 +11,7 @@ const mdxOptions = {
     require('remark-autolink-headings'),
     require('remark-slug'),
     require('remark-code-titles'),
+    require('remark-emoji')
   ],
   rehypePlugins: [mdxPrism],
   extendFrontMatter: {
