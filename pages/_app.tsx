@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
+import { MDXProvider } from '@mdx-js/react';
+import MDXComponents from '../components/atoms/MDX';
 import '../styles/styles.css';
 import SEO from '../next-seo.config';
 
@@ -10,7 +12,9 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
+      <MDXProvider components={MDXComponents}>
+        <Component {...pageProps} />
+      </MDXProvider>
     </>
   )
 }
