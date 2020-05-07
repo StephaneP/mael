@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build ; next build"
+    "build": "next build"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
@@ -26,6 +26,7 @@
     "@types/node": "^13.13.5",
     "@types/react": "^16.9.34",
     "babel-plugin-import-glob-array": "^0.2.0",
+    "fs-extra": "^9.0.0",
     "typescript": "^3.8.3"
   }
 }

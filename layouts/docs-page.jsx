@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
 export default frontMatter => {
-  console.info('>FM', frontMatter);
   return ({ children: content }) => {
     return (
       <div>
