@@ -25,6 +25,8 @@ export default (frontMatter: FrontMatter) => {
             <h1 className={styles.title}>{frontMatter.title}</h1>
             <h2 className={styles.time}>{frontMatter.datetime}</h2>
             <Link href='/'><a>Back</a></Link>
+            {frontMatter.tags.map((t) =>
+            <Link href={`/posts?tag=${t}`} key={t}><a><div className={styles.tag}>{t}</div></a></Link>)}
           </PageWrapper>
         </div>
         <PageWrapper>

@@ -1,0 +1,26 @@
+.activeTag {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  background-color: var(--yellow);
+  margin: 2px;
+}
+
+.tag {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  background-color: var(--red);
+  margin: 2px;
+}
+
+.tagContainer {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.content {
+  background-color: var(--foreground);
+  padding: 10px;
+  margin: 10px;
+}

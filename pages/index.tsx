@@ -6,7 +6,7 @@ import Card from "../components/atoms/Card";
 import Timeline from "../components/atoms/Timeline";
 import PageWrapper from "../components/atoms/PageWrapper";
 import { frontMatter as postsPages } from "./posts/*.mdx";
-import styles from "../styles/index.module.css";
+import styles from "../styles/pages/index.module.css";
 
 export default function IndexPage() {
   return (

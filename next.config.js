@@ -21,7 +21,8 @@ const mdxOptions = {
         wordCount: mdxContent.split(/\s+/gu).length,
         readingTime: readingTime(mdxContent),
         slug: `/${frontMatter.__resourcePath.replace(/\.mdx$/, "")}`,
-        domain: process.env.NODE_ENV === 'production' ? seoUrl : 'http://localhost:3000'
+        domain: process.env.NODE_ENV === 'production' ? seoUrl : 'http://localhost:3000',
+        tags: frontMatter.tags ? frontMatter.tags.split(',').map((i) => i.trim()) : []
       })
     }
   }

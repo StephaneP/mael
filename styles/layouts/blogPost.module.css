@@ -17,3 +17,11 @@
   margin-top: 10px;
   padding: 10px;
 }
+
+.tag {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  background-color: var(--red);
+  margin: 2px;
+}

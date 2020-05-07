@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { MDXProvider } from '@mdx-js/react';
 import MDXComponents from '../components/atoms/MDX';
-import '../styles/styles.css';
 import SEO from '../next-seo.config';
+import '../styles/styles.css';
 
 export default function App({ Component, pageProps }) {
   return (
