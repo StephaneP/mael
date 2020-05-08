@@ -9,7 +9,8 @@
     "build": "next build",
     "prettier": "prettier --write './{pages,util}/**/*.{js,jsx,ts,tsx}'",
     "prettier:check": "prettier --list-different './{pages,util}/**/*.{js,jsx,ts,tsx}'",
-    "scripts:add-times": "node scripts/add-times && git add pages/posts/*.mdx"
+    "scripts:add-times": "node scripts/add-times && git add pages/posts/*.mdx",
+    "scripts:process-tech-logos": "node scripts/process-tech-logos"
   },
   "husky": {
     "hooks": {
@@ -42,6 +43,7 @@
     "babel-plugin-import-glob-array": "^0.2.0",
     "fs-extra": "^9.0.0",
     "husky": "^4.2.5",
+    "jimp": "^0.10.3",
     "klaw": "^3.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
