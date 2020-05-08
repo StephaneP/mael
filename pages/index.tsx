@@ -34,18 +34,60 @@ export default function IndexPage() {
           </CardContainer>
           <Timeline
             items={[
-              { title: "Threads Styling", description: "Yes" },
-              { title: "MailOnline", description: "More" },
-              { title: "Clock Limited", description: "What" },
-            ]}
-          />
-          <Timeline
-            items={[
-              { title: "Year 1", description: "Yes" },
-              { title: "Year 2", description: "Yes" },
-              { title: "Year 3", description: "Yes" },
-              { title: "Year 4", description: "Yes" },
-              { title: "Year 5", description: "Yes" },
+              {
+                key: 'thrds-1',
+                title: <><em>Threads Styling</em> London | Software Engineer</>,
+                description: <>August 2018 - Present</>,
+                icon: '/images/company/logos/threads-styling.png'
+              },
+              {
+                key: 'mo-2',
+                title: <><em>MailOnline</em> London | Software Engineer</>,
+                description: <>March 2018 - July 2018</>,
+                icon: '/images/company/logos/mailonline.png'
+              },
+              {
+                key: 'mo-1',
+                title: <><em>MailOnline</em> London | Junior Software Engineer</>,
+                description: <>July 2017 - March 2018</>,
+                icon: '/images/company/logos/mailonline.png'
+              },
+              {
+                key: 'clk-2',
+                title: <><em>Clock Limited</em> Kings Langley | Junior Software Engineer</>,
+                description: <>July 2016 - July 2017</>,
+                icon: '/images/company/logos/clock.png'
+              },
+              {
+                key: '5',
+                title: <>Loughborough University | Computer Science MSci Year 5</>,
+                description: <><p>2012-2013</p><p><em>Thesis:</em> Complex Adaptive Systems and Grouping Behaviour over Evolution</p></>,
+                icon: '/images/company/logos/lboro-uni.png'
+              },
+              {
+                key: 'clk-1',
+                title: <><em>Clock Limited</em> Kings Langley | Placement Software Engineer</>,
+                description: <>July 2015 - July 2016</>,
+                icon: '/images/company/logos/clock.png'
+              },
+              {
+                key: '3',
+                title: <>Loughborough University | Computer Science MSci Year 3</>,
+                description: <><p>2012-2013</p><p><em>Dissertation:</em> Stock Market Prediction using Historical Data and News Information</p></>,
+                icon: '/images/company/logos/lboro-uni.png'
+              },
+              {
+                key: '2',
+                title: <>Loughborough University | Computer Science MSci Year 2</>,
+                description: <><p>2012-2013</p><p>My second year</p></>,
+                icon: '/images/company/logos/lboro-uni.png'
+              },
+              {
+                key: '1',
+                title: <>Loughborough University | Computer Science MSci Year 1</>,
+                description: <><p>2012-2013</p><p>My first year</p></>,
+                icon: '/images/company/logos/lboro-uni.png'
+              }
             ]}
           />
         </PageWrapper>
