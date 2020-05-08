@@ -6,10 +6,22 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build"
+    "build": "next build",
+    "prettier": "prettier --write './{pages,util}/**/*.{js,jsx,ts,tsx}'",
+    "prettier:check": "prettier --list-different './{pages,util}/**/*.{js,jsx,ts,tsx}'",
+    "scripts:add-times": "node scripts/add-times && git add pages/posts/*.mdx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && yarn scripts:add-times"
+    }
+  },
+  "prettier": {
+    "printWidth": 100
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.4.0",
+    "date-fns": "^2.13.0",
     "mdx-prism": "^0.3.1",
     "next": "^9.3.6",
     "next-mdx-enhanced": "^2.5.0",
@@ -29,6 +41,11 @@
     "@types/react": "^16.9.34",
     "babel-plugin-import-glob-array": "^0.2.0",
     "fs-extra": "^9.0.0",
+    "husky": "^4.2.5",
+    "klaw": "^3.0.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "through2": "^3.0.1",
     "typescript": "^3.8.3"
   }
 }

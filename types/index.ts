@@ -5,11 +5,12 @@ export interface FrontMatter {
   tags: string[];
   title: string;
   layout: string;
-  datetime: string;
+  createdAt: string;
+  modifiedAt: string;
   readingTime: {
     text: string;
     minutes: number;
     time: number;
     words: number;
-  }
+  };
 }
