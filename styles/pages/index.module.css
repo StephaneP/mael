@@ -28,3 +28,12 @@
 .cardDatetime {
   font-weight: normal;
 }
+
+.datetime {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.techContainer {
+  margin: 8px 2px;
+}
