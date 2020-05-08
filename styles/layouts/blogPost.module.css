@@ -24,12 +24,16 @@
   .headerContainer {
     min-height: 20vh;
   }
+
+  .content {
+    min-height: 80vh !important;
+  }
 }
 
 .content {
   background-color: var(--foreground);
   padding: 10px;
-  min-height: 80vh;
+  min-height: 50vh;
 }
 
 .tag {
