@@ -151,6 +151,7 @@ export default function IndexPage() {
                       <TechLogo name="php" />
                       <TechLogo name="mysql" />
                       <TechLogo name="drone" />
+                      <TechLogo name="travisci" />
                       <TechLogo name="mocha" />
                       <TechLogo name="npm" />
                       <TechLogo name="gulp" />
@@ -214,6 +215,7 @@ export default function IndexPage() {
                       <TechLogo name="php" />
                       <TechLogo name="mysql" />
                       <TechLogo name="drone" />
+                      <TechLogo name="travisci" />
                       <TechLogo name="mocha" />
                       <TechLogo name="npm" />
                       <TechLogo name="gulp" />
