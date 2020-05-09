@@ -20,9 +20,15 @@
 
 .item {
   padding: 0px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   will-change: font-size;
   transition: font-size 0.2s;
+}
+
+@media (min-width: 800px) {
+  .item {
+    margin-bottom: 8px;
+  }
 }
 
 .item:hover {

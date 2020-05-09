@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.cardReadingTime {
+  font-weight: normal;
+  flex: 1;
+}
+
+.cardDatetime {
+  font-weight: normal;
+}

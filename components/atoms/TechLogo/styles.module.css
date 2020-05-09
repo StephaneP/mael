@@ -9,7 +9,7 @@
 .container {
   display: inline-block;
   height: 40px;
-  width: 80px;
+  width: min(80px, 20vw);
   padding: 5px 10px;
   background-color: #ffffff;
   margin: 2px;

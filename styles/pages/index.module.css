@@ -1,39 +1,18 @@
 .bottom {
   background: var(--foreground);
-  padding-top: 20px;
+  padding: 20px 0px;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.cardTop {
+.sectionSelect {
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
   flex: 1;
-}
-
-.cardTitle {
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.cardReadingTime {
-  font-weight: normal;
-  flex: 1;
-}
-
-.cardDatetime {
-  font-weight: normal;
-}
-
-.datetime {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.techContainer {
-  margin: 8px 2px;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: bold;
 }
