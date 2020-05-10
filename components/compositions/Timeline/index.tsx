@@ -35,6 +35,7 @@ const TimelineSection: FC = () => {
                   <TechLogo name="terraform" />
                   <TechLogo name="circleci" />
                   <TechLogo name="graphql" />
+                  <TechLogo name="apollo" />
                   <TechLogo name="typescript" />
                   <TechLogo name="jest" />
                   <TechLogo name="webpack" />
@@ -135,13 +136,13 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
-                <p>
-                  <p>Group Project - evoto</p>
-                  <p>Learning Evaluation in a Specialised Subject</p>
-                  <p>Managing a Project Team</p>
-                  <p>Introduction to E-Business</p>
-                  <p>Thesis Project</p>
-                </p>
+                <ul>
+                  <li>Group Project - evoto</li>
+                  <li>Learning Evaluation in a Specialised Subject</li>
+                  <li>Managing a Project Team</li>
+                  <li>Introduction to E-Business</li>
+                  <li>Thesis Project</li>
+                </ul>
                 <p>
                   <em>Thesis:</em> Complex Adaptive Systems and Grouping Behaviour over Evolution
                 </p>
@@ -205,17 +206,17 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
-                <p>
-                  <p>Advanced Artificial Intelligence Systems</p>
-                  <p>Advanced Human-Computer Interaction</p>
-                  <p>Advanced Networking</p>
-                  <p>Agent-Based Systems</p>
-                  <p>Algorithm Analysis</p>
-                  <p>Cryptography and Network Security</p>
-                  <p>Data Mining</p>
-                  <p>Mobile Application Development</p>
-                  <p>Software Project Management</p>
-                </p>
+                <ul>
+                  <li>Advanced Artificial Intelligence Systems</li>
+                  <li>Advanced Human-Computer Interaction</li>
+                  <li>Advanced Networking</li>
+                  <li>Agent-Based Systems</li>
+                  <li>Algorithm Analysis</li>
+                  <li>Cryptography and Network Security</li>
+                  <li>Data Mining</li>
+                  <li>Mobile Application Development</li>
+                  <li>Software Project Management</li>
+                </ul>
                 <p>
                   <em>Dissertation:</em> Stock Market Prediction using Historical Data and News
                   Information
@@ -246,19 +247,19 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
-                <p>
-                  <p>2D Computer Graphics</p>
-                  <p>AI Methods</p>
-                  <p>Advanced Web Programming</p>
-                  <p>Formal Languages and Theory of Computation</p>
-                  <p>Formal Specification</p>
-                  <p>Legal and Professional Issues in Computing</p>
-                  <p>Operating Systems, Networks and the Internet 1</p>
-                  <p>Operating Systems, Networks and the Internet 2</p>
-                  <p>Professional Training Preparation</p>
-                  <p>Requirements Engineering</p>
-                  <p>Team Projects</p>
-                </p>
+                <ul>
+                  <li>2D Computer Graphics</li>
+                  <li>AI Methods</li>
+                  <li>Advanced Web Programming</li>
+                  <li>Formal Languages and Theory of Computation</li>
+                  <li>Formal Specification</li>
+                  <li>Legal and Professional Issues in Computing</li>
+                  <li>Operating Systems, Networks and the Internet 1</li>
+                  <li>Operating Systems, Networks and the Internet 2</li>
+                  <li>Professional Training Preparation</li>
+                  <li>Requirements Engineering</li>
+                  <li>Team Projects</li>
+                </ul>
                 <div className={styles.techContainer}>
                   <TechLogo name="mysql" />
                   <TechLogo name="java" />
@@ -275,16 +276,16 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
-                <p>
-                  <p>Computer Systems</p>
-                  <p>Databases</p>
-                  <p>Essential Skills for Computing</p>
-                  <p>Logic and Functional Programming</p>
-                  <p>Mathematics for Computer Science</p>
-                  <p>Object Oriented Programming and Algorithms</p>
-                  <p>Programming for the WWW</p>
-                  <p>Server Side Programming</p>
-                </p>
+                <ul>
+                  <li>Computer Systems</li>
+                  <li>Databases</li>
+                  <li>Essential Skills for Computing</li>
+                  <li>Logic and Functional Programming</li>
+                  <li>Mathematics for Computer Science</li>
+                  <li>Object Oriented Programming and Algorithms</li>
+                  <li>Programming for the WWW</li>
+                  <li>Server Side Programming</li>
+                </ul>
               </>
             ),
             icon: "/images/company/logos/lboro-uni.png",

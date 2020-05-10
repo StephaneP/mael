@@ -28,7 +28,7 @@ function Sections() {
       </div>
       <PostsSection />
       <div className={styles.sectionSelect}>
-        <div className={styles.sectionTitle}>Projects</div>
+        <div className={styles.sectionTitle}>Personal Projects</div>
       </div>
       <ProjectsSection />
       <div className={styles.sectionSelect}>
