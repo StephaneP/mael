@@ -1,5 +1,4 @@
-import FancyCard from "../components/atoms/FancyCard";
-import Socials from "../components/atoms/Socials";
+import { FaGithubAlt, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import PageWrapper from "../components/atoms/PageWrapper";
 import PostsSection from "../components/compositions/Posts";
 import TimelineSection from "../components/compositions/Timeline";
@@ -9,8 +8,42 @@ import styles from "../styles/pages/index.module.css";
 export default function IndexPage() {
   return (
     <>
-      <FancyCard />
-      <Socials />
+      <div className={styles.top}>
+        <PageWrapper>
+          <>
+            <div className={styles.topTitleWrapper}>
+              <em className={styles.topTitle}>Matt Elphick</em>
+              <span className={styles.topSubtitle}>Software Engineer</span>
+            </div>
+            <div className={styles.socialWrapper}>
+              <a href="https://github.com/maael" title="GitHub | maael">
+                <div
+                  className={styles.socialItem}
+                  style={{ backgroundColor: "var(--github-grey)", color: "#000000" }}
+                >
+                  <FaGithubAlt />
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/melphick/" title="LinkedIn | melphick">
+                <div
+                  className={styles.socialItem}
+                  style={{ backgroundColor: "var(--linkedin-blue)" }}
+                >
+                  <FaLinkedin />
+                </div>
+              </a>
+              <a
+                href="mailto:matthew.a.elphick@gmail.com"
+                title="Email | matthew.a.elphick@gmail.com"
+              >
+                <div className={styles.socialItem} style={{ backgroundColor: "var(--email)" }}>
+                  <FaEnvelope />
+                </div>
+              </a>
+            </div>
+          </>
+        </PageWrapper>
+      </div>
       <main className={styles.bottom}>
         <PageWrapper>
           <Sections />
@@ -32,7 +65,7 @@ function Sections() {
       </div>
       <ProjectsSection />
       <div className={styles.sectionSelect}>
-        <div className={styles.sectionTitle}>Timeline</div>
+        <div className={styles.sectionTitle}>Work and Stuff</div>
       </div>
       <TimelineSection />
     </>

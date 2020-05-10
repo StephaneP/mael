@@ -1,3 +1,44 @@
+.top {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .topTitleWrapper {
+    align-items: center !important;
+    flex-direction: row !important;
+  }
+
+  .topTitle {
+    font-size: 50px !important;
+    padding-right: 10px;
+    border-right: 2px solid #ffffff;
+  }
+
+  .topSubtitle {
+    display: inline-block !important;
+    margin-left: 10px;
+  }
+}
+
+.topTitleWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 30px 0px 20px 0px;
+}
+
+.topTitle {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.topSubtitle {
+  font-size: 30px;
+  display: block;
+}
+
 .bottom {
   background: var(--foreground);
   padding: 20px 0px;
@@ -15,4 +56,34 @@
   font-size: 30px;
   color: #ffffff;
   font-weight: bold;
+}
+
+.socialWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 50px;
+  align-items: flex-end;
+}
+
+.socialItem {
+  background-color: var(--light-grey);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  display: block;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  margin: 0px 5px;
+  will-change: font-size, height;
+  transition: font-size 0.2s, height 0.2s;
+}
+
+.socialItem:hover {
+  font-size: 1.75em;
+  height: 50px !important;
 }
