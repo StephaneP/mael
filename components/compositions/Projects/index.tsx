@@ -1,6 +1,8 @@
 import { FC } from "react";
 import Project, { Props as ProjectProps } from "../../atoms/Project";
+import Separator from "../../atoms/Separator";
 import TechLogo from "../../atoms/TechLogo";
+import styles from "./styles.module.css";
 
 const projects: ProjectProps[] = [
   {
@@ -9,12 +11,15 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/mael",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="nextjs" />
-        <TechLogo name="vercel" />
-        <TechLogo name="mdx" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="nextjs" />
+          <TechLogo name="vercel" />
+          <TechLogo name="mdx" />
+        </div>
       </>
     ),
   },
@@ -24,11 +29,14 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/coronavirus-banks",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="nextjs" />
-        <TechLogo name="vercel" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="nextjs" />
+          <TechLogo name="vercel" />
+        </div>
       </>
     ),
   },
@@ -38,12 +46,15 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/majority-plays",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="socketio" />
-        <TechLogo name="circleci" />
-        <TechLogo name="heroku" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="socketio" />
+          <TechLogo name="circleci" />
+          <TechLogo name="heroku" />
+        </div>
       </>
     ),
   },
@@ -53,12 +64,15 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/nook",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="nextjs" />
-        <TechLogo name="vercel" />
-        <TechLogo name="fauna" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="nextjs" />
+          <TechLogo name="vercel" />
+          <TechLogo name="fauna" />
+        </div>
       </>
     ),
   },
@@ -68,12 +82,15 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/temtem",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="nextjs" />
-        <TechLogo name="vercel" />
-        <TechLogo name="fauna" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="nextjs" />
+          <TechLogo name="vercel" />
+          <TechLogo name="fauna" />
+        </div>
       </>
     ),
   },
@@ -83,12 +100,15 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/temtem-api",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="circleci" />
-        <TechLogo name="nextjs" />
-        <TechLogo name="vercel" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="circleci" />
+          <TechLogo name="nextjs" />
+          <TechLogo name="vercel" />
+        </div>
       </>
     ),
   },
@@ -98,14 +118,17 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/ffxivpocketcraft",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="mongodb" />
-        <TechLogo name="circleci" />
-        <TechLogo name="docker" />
-        <TechLogo name="dokku" />
-        <TechLogo name="digitalocean" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="mongodb" />
+          <TechLogo name="circleci" />
+          <TechLogo name="docker" />
+          <TechLogo name="dokku" />
+          <TechLogo name="digitalocean" />
+        </div>
       </>
     ),
   },
@@ -115,14 +138,17 @@ const projects: ProjectProps[] = [
     github: "https://github.com/maael/copycat",
     description: (
       <>
-        <TechLogo name="js" />
-        <TechLogo name="typescript" />
-        <TechLogo name="react" />
-        <TechLogo name="socketio" />
-        <TechLogo name="circleci" />
-        <TechLogo name="docker" />
-        <TechLogo name="dokku" />
-        <TechLogo name="digitalocean" />
+        <Separator label="Tech" />
+        <div className={styles.techContainer}>
+          <TechLogo name="js" />
+          <TechLogo name="typescript" />
+          <TechLogo name="react" />
+          <TechLogo name="socketio" />
+          <TechLogo name="circleci" />
+          <TechLogo name="docker" />
+          <TechLogo name="dokku" />
+          <TechLogo name="digitalocean" />
+        </div>
       </>
     ),
   },

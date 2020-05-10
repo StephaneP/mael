@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Timeline from "../../atoms/Timeline";
 import TechLogo from "../../atoms/TechLogo";
+import Separator from "../../atoms/Separator";
 import styles from "./styles.module.css";
 
 const TimelineSection: FC = () => {
@@ -20,6 +21,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>August 2018 - Present</p>
+                <Separator label="Tech" />
                 <div className={styles.techContainer}>
                   <TechLogo name="nodejs" />
                   <TechLogo name="js" />
@@ -57,6 +59,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>March 2018 - July 2018</p>
+                <Separator label="Tech" />
                 <div className={styles.techContainer}>
                   <TechLogo name="react" />
                   <TechLogo name="nodejs" />
@@ -83,6 +86,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>July 2017 - March 2018</p>
+                <Separator label="Tech" />
                 <div className={styles.techContainer}>
                   <TechLogo name="nodejs" />
                   <TechLogo name="js" />
@@ -108,6 +112,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>July 2016 - July 2017</p>
+                <Separator label="Tech" />
                 <div className={styles.techContainer}>
                   <TechLogo name="nodejs" />
                   <TechLogo name="js" />
@@ -136,6 +141,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
+                <Separator label="Modules" />
                 <ul>
                   <li>Group Project - evoto</li>
                   <li>Learning Evaluation in a Specialised Subject</li>
@@ -179,6 +185,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>July 2015 - July 2016</p>
+                <Separator label="Tech" />
                 <div className={styles.techContainer}>
                   <TechLogo name="nodejs" />
                   <TechLogo name="js" />
@@ -206,6 +213,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
+                <Separator label="Modules" />
                 <ul>
                   <li>Advanced Artificial Intelligence Systems</li>
                   <li>Advanced Human-Computer Interaction</li>
@@ -247,6 +255,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
+                <Separator label="Modules" />
                 <ul>
                   <li>2D Computer Graphics</li>
                   <li>AI Methods</li>
@@ -276,6 +285,7 @@ const TimelineSection: FC = () => {
             description: (
               <>
                 <p className={styles.datetime}>2012-2013</p>
+                <Separator label="Modules" />
                 <ul>
                   <li>Computer Systems</li>
                   <li>Databases</li>

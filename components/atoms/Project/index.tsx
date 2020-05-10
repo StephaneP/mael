@@ -11,12 +11,12 @@ export interface Props {
 
 const Project: FC<Props> = ({ github, title, url, description }) => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.row}>
+        <p className={styles.title}>{title}</p>
         <a className={styles.ghIcon} href={github}>
           <FaGithub />
         </a>
-        <p className={styles.title}>{title}</p>
         <a className={styles.linkIcon} href={url}>
           <FaLink />
         </a>
