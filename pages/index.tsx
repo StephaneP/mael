@@ -9,7 +9,7 @@ export default function IndexPage() {
   return (
     <>
       <div className={styles.top}>
-        <PageWrapper>
+        <PageWrapper style={{ display: "flex", flexDirection: "column", flex: 1 }}>
           <>
             <div className={styles.topTitleWrapper}>
               <em className={styles.topTitle}>Matt Elphick</em>

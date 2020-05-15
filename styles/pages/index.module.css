@@ -2,12 +2,15 @@
   min-height: 20vh;
   display: flex;
   align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 
 @media (min-width: 800px) {
   .topTitleWrapper {
     align-items: center !important;
     flex-direction: row !important;
+    padding: 30px 0px 20px 0px;
   }
 
   .topTitle {
@@ -26,7 +29,8 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 30px 0px 20px 0px;
+  padding: 30px 0px 60px 0px;
+  flex: 1;
 }
 
 .topTitle {
@@ -64,6 +68,9 @@
   justify-content: flex-end;
   height: 50px;
   align-items: flex-end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .socialItem {

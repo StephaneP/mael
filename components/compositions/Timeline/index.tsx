@@ -44,6 +44,9 @@ const TimelineSection: FC = () => {
                   <TechLogo name="yarn" />
                   <TechLogo name="npm" />
                   <TechLogo name="docker" />
+                  <TechLogo name="auth0" />
+                  <TechLogo name="chromatic" />
+                  <TechLogo name="storybook" />
                 </div>
               </>
             ),
