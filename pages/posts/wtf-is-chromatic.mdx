@@ -3,8 +3,10 @@ layout: "BlogPost"
 title: "WTF is Chromatic"
 tags: chromatic, storybook, ui, testing
 createdAt: 2020-05-13T16:53:33.087Z
-modifiedAt: 2020-05-19T17:25:16.680Z
+modifiedAt: 2020-05-19T20:21:22.588Z
 ---
+
+# Introduction
 
 Here at [Threads Styling](https://www.threadsstyling.com/) we use [React](https://reactjs.org/) (well, [React Native](https://reactnative.dev/) more specifically) and we have a component library that we've written, to allow easier re-use of components and to help ensure a more consistent visual design across our different internal products. This isn't unique, tons of companies do this.
 
@@ -12,9 +14,16 @@ We use the fantastic [Storybook](https://storybook.js.org/) tool to help develop
 
 But recently, there's a new kid on the block in terms of cool UI related tools. Enter [Chromatic](https://www.chromatic.com/).
 
+<img
+  src="/images/tech/logos/chromatic.png"
+  style={{ maxWidth: "80px", margin: "10px auto", display: "block" }}
+/>
+
 # What is it?
 
 ## It's made by some people who maintain Storybook
+
+So you know it has to be good.
 
 ## It publishes a Storybook, except better
 
@@ -33,6 +42,8 @@ After talking about it with some people, and enough people expressed interest, I
 And you know what, their promise of one script and that's it?
 
 It was mostly true.
+
+# Getting setup
 
 The process of picking up Chromatic and getting it publishing our Storybook was super short.
 
@@ -109,7 +120,12 @@ mockDate.set("2020-05-12T09:51:31.514Z");
 
 # :two: Services for Avatars/Lorem Ipsum
 
-In a number of places in our stories, we used services such as [placekitten](https://placekitten.com/) to generate placeholder images for avatars and the likes, as well as some external services for lorem ipsum text placeholder, such as [Bacon Ipsum](https://baconipsum.com/json-api/). These were silly bits of fun, but unfortunately, they had to go. The services don't guarantee that you get the same image/text back each time, which means random. Which means **bad**.
+<img
+  src="https://placekitten.com/600/300"
+  style={{ maxWidth: "100%", margin: "0 auto", display: "block" }}
+/>
+
+In a number of places in our stories, we used services such as [placekitten](https://placekitten.com/) to generate placeholder images for avatars and the likes, as well as some external services for lorem ipsum text placeholder, such as [Bacon Ipsum](https://baconipsum.com/json-api/). These were silly bits of fun, but unfortunately, they had to go. The services don't guarantee that you get the same image/text back each time, which means random. Which means _bad_.
 
 Instead we used the [faker](https://www.npmjs.com/package/faker) package with a seed to generate consistent avatars and text.
 
@@ -146,5 +162,7 @@ At the moment, our component library has a number of tests that are just Jest Sn
 But with Chromatic, we get a much better form of insurance, Chromatic lets us actually test that _visually_ nothing changed. This is the important bit that we care about - the changes to our components that our uses will see. So with picking up Chromatic, we can rid ourselves of these mostly pointless snapshot tests.
 
 Also - Chromatic's free plan allows for an unlimited amount of collaborators. This means that there's no reason **not** to include more people earlier in the flow. We're looking to use it to get feedback from our UX and product teams earlier, to mean we can catch issues with design and experience and fix them at the component level easier, before our components even make it into products.
+
+# Conclusion
 
 Overall though, Chromatic is fantastic. What you get for free is ridiculous, and I have no doubt it will save us from UI/UX mistakes that we wouldn't have otherwise have caught.

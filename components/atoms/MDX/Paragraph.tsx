@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from "./paragraph.module.css";
+import styles from "./styles.module.css";
 
 interface Props {
   children: React.ReactNode;
