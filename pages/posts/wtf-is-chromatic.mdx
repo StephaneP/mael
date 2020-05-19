@@ -3,7 +3,148 @@ layout: "BlogPost"
 title: "WTF is Chromatic"
 tags: chromatic, storybook, ui, testing
 createdAt: 2020-05-13T16:53:33.087Z
-modifiedAt: 2020-05-15T08:16:44.459Z
+modifiedAt: 2020-05-19T17:25:16.680Z
 ---
 
-Recently at work.
+Here at [Threads Styling](https://www.threadsstyling.com/) we use [React](https://reactjs.org/) (well, [React Native](https://reactnative.dev/) more specifically) and we have a component library that we've written, to allow easier re-use of components and to help ensure a more consistent visual design across our different internal products. This isn't unique, tons of companies do this.
+
+We use the fantastic [Storybook](https://storybook.js.org/) tool to help develop these components, as it lets us do a number of great things, such as allowing developing each component in isolution and tracking use cases as stories. There's tons of blog posts about Storybook and why it's great.
+
+But recently, there's a new kid on the block in terms of cool UI related tools. Enter [Chromatic](https://www.chromatic.com/).
+
+# What is it?
+
+## It's made by some people who maintain Storybook
+
+## It publishes a Storybook, except better
+
+Previously, we built our Storybook for all our branches and master and pushed it to AWS S3. This was straightforward, cheap as chips, and got us to where we wanted to be. But, we had no auth infront of it, so our stories were open to the public to view and browse. Not the end of the world as they're just dumb UI. We also had to manage reporting the published URL back to GitHub as a status check ourselves, again pretty easy, but another little thing to do. Chromatic takes care of all this, and puts your Storybook on a secure CDN with SSO and access control from your GitHub organisation. It promises to let you run one little script, and it'll take care of the rest. For the cheap cheap price of £0, they'll give you unlimited storybooks. Seems nuts.
+
+## Automatic VRT (Visual Regression Testing)
+
+What's VRT? Basically it's diff-ing, but for images. Chromatic will take _snapshots_ of your stories, and if there's a difference to what it got last time, it will flag it for checking, and give you a super cool side by side comparison, highlighting the bits that had changed. Bleary eyed Monday morning reviews just got so much easier.
+
+## Better UI Feedback/Review process
+
+These are just some small things, but they're nice as they let you bring UI/UX more into the release workflow, through means like requiring reviewing the changed components as status checks in GitHub, and the ability to add comments directly on stories.
+
+After talking about it with some people, and enough people expressed interest, I set aside some time to take it for a spin.
+
+And you know what, their promise of one script and that's it?
+
+It was mostly true.
+
+The process of picking up Chromatic and getting it publishing our Storybook was super short.
+
+I replaced our custom shenanigans in our CI config handling it with:
+
+```bash:✨The_Magic✨
+> CI=true npx chromatic --storybook-build-dir ./storybook-static \
+  --no-interactive --exit-zero-on-changes --auto-accept-changes master
+```
+
+Then I made sure that we had `CHROMATIC_TOKEN` set up in our CI environment.
+
+**And that was it.**
+
+Let's run through the command and the options we landed on using real quick:
+
+```bash
+CI=true npx chromatic
+```
+
+Here we're just make sure to set the _CI_ environment variable so Chromatic knows it's deploying from CI instead of local, and using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) to run the chromatic script.
+
+```bash
+--storybook-build-dir ./storybook-static
+```
+
+We already built the storybook as a previous step in our CI workflow, so there's no need for Chromatic to waste the time rebuilding it, so we just tell it where the built storybook already is.
+
+```bash
+--no-interactive
+```
+
+We're on CI - no one's going to be interacting with anything, and there's no point hanging around wasting time waiting for an input that's never coming.
+
+```bash
+--exit-zero-on-changes
+```
+
+We're just testing Chromatic out, so we don't want
+
+```bash
+--auto-accept-changes master
+```
+
+As we're just taking Chromatic for a spin, we didn't want to require the GitHub status checks as [required status checks]() straight away, instead we just mark anything that lands on master as fine, this is so that Chromatic can use anything on master as the [baseline]() to compare our changes against, otherwise Chromatic doesn't test against anything that's not accepted, and you can end up with unexpected change lists in Chromatic because you forgot to accept some previous changes.
+
+And that got Chromatic off and running. But looking through the results - there were some unexpected changes coming through, with lots of components being flagged as changed by Chromatic that the code changes we were making shouldn't have touched.
+
+Digging into these we found some bad things we were doing in our stories that meant we were accidentally sabotaging the snapshots Chromatic was taking and using to check for visual changes.
+
+We'll go through the different things, but essentially what most of them boil down to is:
+
+> Randomness in stories is bad.
+
+Why?
+
+Randomness changes the stories every time, so Chromatic will see something different every time it takes a snapshot.
+
+This causes false positives of unaffected components being marked as changed.
+
+False positives are bad, as they waste time and erode confidence in Chromatic.
+
+# :one: Dates and Times
+
+Time's always changing, and so any stories showing the time or date would change too. That's bad, because we don't care about those kind of changes - nothing design wise has changed, just content.
+
+As we wanted to try to pick up Chromatic with the most benefit as quickly as possible, we solved this quickly by mocking JavaScript's `Date` in our storybook config, using [mockdate](https://www.npmjs.com/package/mockdate).
+
+```js:config.js
+import mockDate from "mockdate";
+
+mockDate.set("2020-05-12T09:51:31.514Z");
+```
+
+# :two: Services for Avatars/Lorem Ipsum
+
+In a number of places in our stories, we used services such as [placekitten](https://placekitten.com/) to generate placeholder images for avatars and the likes, as well as some external services for lorem ipsum text placeholder, such as [Bacon Ipsum](https://baconipsum.com/json-api/). These were silly bits of fun, but unfortunately, they had to go. The services don't guarantee that you get the same image/text back each time, which means random. Which means **bad**.
+
+Instead we used the [faker](https://www.npmjs.com/package/faker) package with a seed to generate consistent avatars and text.
+
+# :three: Math.random
+
+Continuing the whole "Random is bad" theme, unsurprisingly, Math.random is something we want to avoid too.
+
+Once again we used [faker](https://www.npmjs.com/package/faker) to deal with this.
+
+# :four: Animations
+
+Chromatic takes a snapshot of the component for the VRT. If it’s animated, there’s no guarantee that the bit of the animation will be the same.
+
+Examples are loaders and placeholder shimmers.
+
+For now, we just turn off Chromatic for these, but in the future we want to either mess with the thresholding for diffs that you can do, or somehow make them static for Chromatic testing.
+
+# :five: Things that break Chromatic
+
+Some of the time we have stories doing crazy things to test limits.
+To test virtualization, we have some really long lists, one that’s 1,200x88,067 pixels.
+In the words of the support guy:
+
+> ow my 1,200x88,067 is a lot of pixels for sure
+
+You're not wrong Norbert.
+
+For cases like this you should just disable chromatic by passing this as the third parameter to a story same as animations. At least, that's what we did.
+
+# Future Plans
+
+At the moment, our component library has a number of tests that are just Jest Snapshot tests, with a lot of mocking of internal components. The testing of interesting things like interactions happen out in the products where the components get used. We focus more on integration tests, testing how the users actually would use what we build. When the library was initially small, these snapshot tests offered us some insurance, letting us know what kind of changes we were making would affect what other components. But overall, they became a maintainence cost. Pull requests would have long snapshots with changes, that people would skim over or not review at all. And these tests take time to run on CI.
+
+But with Chromatic, we get a much better form of insurance, Chromatic lets us actually test that _visually_ nothing changed. This is the important bit that we care about - the changes to our components that our uses will see. So with picking up Chromatic, we can rid ourselves of these mostly pointless snapshot tests.
+
+Also - Chromatic's free plan allows for an unlimited amount of collaborators. This means that there's no reason **not** to include more people earlier in the flow. We're looking to use it to get feedback from our UX and product teams earlier, to mean we can catch issues with design and experience and fix them at the component level easier, before our components even make it into products.
+
+Overall though, Chromatic is fantastic. What you get for free is ridiculous, and I have no doubt it will save us from UI/UX mistakes that we wouldn't have otherwise have caught.
