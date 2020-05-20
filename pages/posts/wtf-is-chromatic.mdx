@@ -3,7 +3,7 @@ layout: "BlogPost"
 title: "WTF is Chromatic"
 tags: chromatic, storybook, ui, testing
 createdAt: 2020-05-13T16:53:33.087Z
-modifiedAt: 2020-05-19T20:21:22.588Z
+modifiedAt: 2020-05-20T08:05:27.897Z
 ---
 
 # Introduction
@@ -23,11 +23,25 @@ But recently, there's a new kid on the block in terms of cool UI related tools. 
 
 ## It's made by some people who maintain Storybook
 
-So you know it has to be good.
+<img
+  src="/images/tech/logos/storybook.png"
+  style={{
+    maxWidth: "175px",
+    margin: "10px auto",
+    display: "block",
+    backgroundColor: "white",
+    padding: 10,
+    borderRadius: 5,
+  }}
+/>
+
+So you know it's going to be good.
 
 ## It publishes a Storybook, except better
 
-Previously, we built our Storybook for all our branches and master and pushed it to AWS S3. This was straightforward, cheap as chips, and got us to where we wanted to be. But, we had no auth infront of it, so our stories were open to the public to view and browse. Not the end of the world as they're just dumb UI. We also had to manage reporting the published URL back to GitHub as a status check ourselves, again pretty easy, but another little thing to do. Chromatic takes care of all this, and puts your Storybook on a secure CDN with SSO and access control from your GitHub organisation. It promises to let you run one little script, and it'll take care of the rest. For the cheap cheap price of £0, they'll give you unlimited storybooks. Seems nuts.
+Previously, we built our Storybook for all our branches and master and pushed it to AWS S3. This was straightforward, cheap as chips, and got us to where we wanted to be. But, we had no auth infront of it, so our stories were open to the public to view and browse. Not the end of the world as they're just dumb UI. We also had to manage reporting the published URL back to GitHub as a status check ourselves, again pretty easy, but another little thing to do.
+
+Chromatic takes care of all this, and puts your Storybook on a secure CDN with SSO and access control from your GitHub organisation. It promises to let you run one little script, and it'll take care of the rest. For the cheap cheap price of £0, they'll give you unlimited storybooks. Seems nuts.
 
 ## Automatic VRT (Visual Regression Testing)
 
@@ -47,7 +61,7 @@ It was mostly true.
 
 The process of picking up Chromatic and getting it publishing our Storybook was super short.
 
-I replaced our custom shenanigans in our CI config handling it with:
+I replaced our custom shenanigans in our Continuous Integration (CI) config handling it with:
 
 ```bash:✨The_Magic✨
 > CI=true npx chromatic --storybook-build-dir ./storybook-static \
@@ -64,7 +78,7 @@ Let's run through the command and the options we landed on using real quick:
 CI=true npx chromatic
 ```
 
-Here we're just make sure to set the _CI_ environment variable so Chromatic knows it's deploying from CI instead of local, and using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) to run the chromatic script.
+Here we're just make sure to set the `CI` environment variable so Chromatic knows it's deploying from CI instead of local, and using [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) to run the chromatic script.
 
 ```bash
 --storybook-build-dir ./storybook-static
@@ -88,7 +102,7 @@ We're just testing Chromatic out, so we don't want
 --auto-accept-changes master
 ```
 
-As we're just taking Chromatic for a spin, we didn't want to require the GitHub status checks as [required status checks]() straight away, instead we just mark anything that lands on master as fine, this is so that Chromatic can use anything on master as the [baseline]() to compare our changes against, otherwise Chromatic doesn't test against anything that's not accepted, and you can end up with unexpected change lists in Chromatic because you forgot to accept some previous changes.
+As we're just taking Chromatic for a spin, we didn't want to require the GitHub status checks as [required status checks](https://help.github.com/en/github/administering-a-repository/about-required-status-checks) straight away, instead we just mark anything that lands on master as fine, this is so that Chromatic can use anything on master as the [baseline](https://www.chromatic.com/docs/branching-and-baselines) to compare our changes against, otherwise Chromatic doesn't test against anything that's not accepted, and you can end up with unexpected change lists in Chromatic because you forgot to accept some previous changes.
 
 And that got Chromatic off and running. But looking through the results - there were some unexpected changes coming through, with lots of components being flagged as changed by Chromatic that the code changes we were making shouldn't have touched.
 
@@ -96,7 +110,7 @@ Digging into these we found some bad things we were doing in our stories that me
 
 We'll go through the different things, but essentially what most of them boil down to is:
 
-> Randomness in stories is bad.
+> [icon:⚠️|center] Randomness in stories is bad.
 
 Why?
 
@@ -120,20 +134,40 @@ mockDate.set("2020-05-12T09:51:31.514Z");
 
 # :two: Services for Avatars/Lorem Ipsum
 
-<img
-  src="https://placekitten.com/600/300"
-  style={{ maxWidth: "100%", margin: "0 auto", display: "block" }}
-/>
+![An adorable kitten](https://placekitten.com/600/300 "An adorable kitten")
 
 In a number of places in our stories, we used services such as [placekitten](https://placekitten.com/) to generate placeholder images for avatars and the likes, as well as some external services for lorem ipsum text placeholder, such as [Bacon Ipsum](https://baconipsum.com/json-api/). These were silly bits of fun, but unfortunately, they had to go. The services don't guarantee that you get the same image/text back each time, which means random. Which means _bad_.
 
 Instead we used the [faker](https://www.npmjs.com/package/faker) package with a seed to generate consistent avatars and text.
 
+```tsx:Avatars
+import faker from "faker";
+
+faker.seed(123);
+
+const avatar = faker.image.avatar();
+```
+
+```tsx:Text
+import faker from "faker";
+
+faker.seed(123);
+
+const linesStr = faker.lorem.lines(50);
+const linesArr = lines.split("\n");
+```
+
 # :three: Math.random
 
-Continuing the whole "Random is bad" theme, unsurprisingly, Math.random is something we want to avoid too.
+Continuing the whole "Random is bad" theme, unsurprisingly, `Math.random` is something we want to avoid too. Fortunately we were only using `Math.random` to help generate fixtures for stories, so again we used [faker](https://www.npmjs.com/package/faker) to deal with this. If you used `Math.random` inside some of your components, you would need to mock out `Math.random` so you get a consistent and predictable sequence of random numbers.
 
-Once again we used [faker](https://www.npmjs.com/package/faker) to deal with this.
+```tsx
+import faker from "faker";
+
+faker.seed(123);
+
+const num = faker.random.number({ min: 0, max: 10 });
+```
 
 # :four: Animations
 
@@ -143,17 +177,29 @@ Examples are loaders and placeholder shimmers.
 
 For now, we just turn off Chromatic for these, but in the future we want to either mess with the thresholding for diffs that you can do, or somehow make them static for Chromatic testing.
 
+```tsx
+storiesOf("molecules/Loader", module).add("Loader", () => <Loader />, {
+  chromatic: { disable: true },
+});
+```
+
 # :five: Things that break Chromatic
 
 Some of the time we have stories doing crazy things to test limits.
 To test virtualization, we have some really long lists, one that’s 1,200x88,067 pixels.
 In the words of the support guy:
 
-> ow my 1,200x88,067 is a lot of pixels for sure
+> [icon:💬|center] ![A lot of pixels](/images/posts/wtf-is-chromatic/norbert.png "A lot of pixels")
 
 You're not wrong Norbert.
 
 For cases like this you should just disable chromatic by passing this as the third parameter to a story same as animations. At least, that's what we did.
+
+```tsx
+storiesOf("molecules/List", module).add("Crazy Long List", () => <List />, {
+  chromatic: { disable: true },
+});
+```
 
 # Future Plans
 

@@ -4,6 +4,14 @@
   margin: 10px 0px;
 }
 
+.p + .p {
+  margin-top: 1em;
+}
+
+.headingA {
+  text-decoration: none;
+}
+
 .h1,
 .h2,
 .h3,
@@ -32,6 +40,10 @@
   border-left-width: 5px;
 }
 
+.introductionHeading {
+  display: none;
+}
+
 .h2 {
   font-size: 1.8em;
   border-left-width: 10px;
@@ -55,4 +67,48 @@
 .h6 {
   font-size: 1em;
   border-left-width: 30px;
+}
+
+.a {
+  color: var(--link);
+  text-decoration: underline;
+  font-weight: bold;
+  text-decoration-color: var(--red);
+  will-change: color;
+  transition: color 0.2s;
+}
+
+.a:hover {
+  color: var(--red);
+}
+
+.blockquote {
+  position: relative;
+  background-color: var(--code-bg);
+  padding: 10px 30px;
+  border-top: 2px solid var(--red);
+  margin: 35px 20px 20px 20px;
+}
+
+.blockquoteIcon {
+  position: absolute;
+  left: -25px;
+  top: -25px;
+  height: 49px;
+  width: 49px;
+  background-color: var(--code-bg);
+  border: 5px solid var(--foreground);
+  border-radius: 50%;
+}
+
+.blockquoteIconInner {
+  border: 2px solid var(--red);
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  text-indent: -2px;
 }

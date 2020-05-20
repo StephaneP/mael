@@ -12,7 +12,7 @@ export default function IndexPage() {
         <PageWrapper style={{ display: "flex", flexDirection: "column", flex: 1 }}>
           <>
             <div className={styles.topTitleWrapper}>
-              <em className={styles.topTitle}>Matt Elphick</em>
+              <b className={styles.topTitle}>Matt Elphick</b>
               <span className={styles.topSubtitle}>Software Engineer</span>
             </div>
             <div className={styles.socialWrapper}>

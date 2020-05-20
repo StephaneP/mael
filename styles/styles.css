@@ -25,7 +25,7 @@ h3,
 h4,
 h5,
 h6,
-bold {
+b {
   font-weight: bold;
 }
 
@@ -43,9 +43,16 @@ li {
   padding: 2px 0px;
 }
 
-blockquote {
+img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+p > code {
   background-color: var(--code-bg);
-  padding: 20px 30px;
-  border-top: 2px solid var(--red);
-  margin: 20px 10px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 0.8em;
 }

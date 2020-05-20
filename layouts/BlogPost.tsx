@@ -26,7 +26,7 @@ export default (frontMatter: FrontMatter) => {
             <div className={styles.header}>
               <h1 className={styles.title}>{frontMatter.title}</h1>
               <h2 className={styles.time}>
-                <Datetime>{frontMatter.createdAt}</Datetime>
+                <Datetime>{frontMatter.createdAt}</Datetime> - {frontMatter.readingTime.text}
               </h2>
               <Link href="/">
                 <a>
