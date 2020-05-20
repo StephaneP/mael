@@ -67,7 +67,11 @@ export function EventList({ events }: { events: string[] }) {
         <div key={`${e}${i}`} className={styles.event}>
           {e}
         </div>,
-        i === events.length - 1 ? null : <div className={styles.eventSpacer}>then</div>,
+        i === events.length - 1 ? null : (
+          <div key={`${e}${i}-spacer`} className={styles.eventSpacer}>
+            then
+          </div>
+        ),
       ])}
     </div>
   );
