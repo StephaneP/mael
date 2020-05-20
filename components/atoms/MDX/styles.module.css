@@ -24,15 +24,17 @@
   margin: 0.8em 0 0.2em 0;
 }
 
-.h1:hover::before,
-.h2:hover::before,
-.h3:hover::before,
-.h4:hover::before,
-.h5:hover::before,
-.h6:hover::before {
-  content: "🔗";
-  position: absolute;
-  left: -45px;
+@media (min-width: 800px) {
+  .h1:hover::before,
+  .h2:hover::before,
+  .h3:hover::before,
+  .h4:hover::before,
+  .h5:hover::before,
+  .h6:hover::before {
+    content: "🔗";
+    position: absolute;
+    left: -45px;
+  }
 }
 
 .h1 {
