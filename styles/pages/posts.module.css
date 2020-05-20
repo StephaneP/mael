@@ -1,8 +1,9 @@
-.activeTag {
+.activeTag,
+.tag {
+  user-select: none;
   cursor: pointer;
   display: inline-block;
   padding: 5px;
-  background-color: var(--yellow);
   margin: 2px;
   will-change: transform, box-shadow;
   z-index: 0;
@@ -10,16 +11,12 @@
   position: relative;
 }
 
+.activeTag {
+  background-color: var(--yellow);
+}
+
 .tag {
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px;
   background-color: var(--red);
-  margin: 2px;
-  will-change: transform, box-shadow;
-  transition: transform 0.2s, box-shadow 0.2s;
-  z-index: 0;
-  position: relative;
 }
 
 .activeTag:hover,
