@@ -18,6 +18,7 @@ const Blockquote: FC = ({ children }) => {
   let info = {
     icon: undefined,
     center: undefined,
+    full: undefined,
   };
   try {
     const content =
@@ -40,19 +41,21 @@ const Blockquote: FC = ({ children }) => {
     //
   }
   return (
-    <blockquote
-      className={styles.blockquote}
-      style={{ textAlign: info.center ? "center" : undefined }}
-    >
-      {info.icon ? (
-        <div className={styles.blockquoteIcon}>
-          <div className={styles.blockquoteIconInner}>{info.icon}</div>
-        </div>
-      ) : (
-        ""
-      )}
-      {processChildren(children)}
-    </blockquote>
+    <div className={styles.blockquoteWrapper}>
+      <blockquote
+        className={styles.blockquote}
+        style={{ textAlign: info.center ? "center" : undefined, flex: info.full ? 1 : undefined }}
+      >
+        {info.icon ? (
+          <div className={styles.blockquoteIcon}>
+            <div className={styles.blockquoteIconInner}>{info.icon}</div>
+          </div>
+        ) : (
+          ""
+        )}
+        {processChildren(children)}
+      </blockquote>
+    </div>
   );
 };
 

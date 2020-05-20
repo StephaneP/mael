@@ -84,12 +84,17 @@
   color: var(--red);
 }
 
+.blockquoteWrapper {
+  margin: 35px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .blockquote {
   position: relative;
   background-color: var(--code-bg);
   padding: 10px 30px;
   border-top: 2px solid var(--red);
-  margin: 35px 20px 20px 20px;
 }
 
 .blockquoteIcon {
