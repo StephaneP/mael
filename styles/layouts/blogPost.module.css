@@ -39,9 +39,9 @@
 .tag {
   cursor: pointer;
   display: inline-block;
-  padding: 5px;
+  padding: 5px 10px;
   background-color: var(--red);
-  margin: 2px;
+  margin: 2px 5px;
   will-change: transform, box-shadow;
   transition: transform 0.2s, box-shadow 0.2s;
   z-index: 0;
