@@ -11,7 +11,8 @@ export default (frontMatter: FrontMatter) => {
     return (
       <div>
         <Head>
-          <link rel="stylesheet" type="text/css" href="/css/prism.css" />
+          <link rel="preload" href="/css/prism.css" as="style" />
+          <link rel="stylesheet" href="/css/prism.css" />
         </Head>
         <NextSeo
           title={`Matt Elphick | ${frontMatter.title}`}
