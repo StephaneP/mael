@@ -3,7 +3,7 @@ layout: "BlogPost"
 title: "WTF is Chromatic"
 tags: chromatic, storybook, ui, testing
 createdAt: 2020-05-13T16:53:33.087Z
-modifiedAt: 2020-05-20T08:05:27.897Z
+modifiedAt: 2020-05-20T08:20:02.003Z
 ---
 
 # Introduction
@@ -182,6 +182,10 @@ storiesOf("molecules/Loader", module).add("Loader", () => <Loader />, {
   chromatic: { disable: true },
 });
 ```
+
+> [icon:ℹ️] Here we are using Storybook's old [storiesOf API](https://storybook.js.org/docs/formats/storiesof-api/) rather than the newer [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/) as our component library uses React Native, which CSF doesn't support.
+>
+> The third argument you can pass to Storybook's `.add` function is an object of parameters for the specific story.
 
 # :five: Things that break Chromatic
 

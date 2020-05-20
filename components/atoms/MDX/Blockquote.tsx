@@ -19,12 +19,15 @@ const Blockquote: FC = ({ children }) => {
     icon: undefined,
     center: undefined,
   };
-  let remainingChildren = children;
   try {
-    const content = typeof children === "string" ? [children] : (children as any).props.children;
+    const content =
+      typeof children === "string"
+        ? [children]
+        : Array.isArray(children)
+        ? (children[0] as any).props.children
+        : (children as any).props.children;
     const details = content.find((c) => c.match(/^\[.+\]$/));
     if (details) {
-      // (remainingChildren as any).props.children.unshift();
       info = details
         .substring(1, details.length - 1)
         .split("|")
