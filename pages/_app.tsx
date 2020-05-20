@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#18191C" />
+        <meta name="theme-color" content="#fd015d" />
         <link rel="icon" sizes="192x192" href="/images/me.jpeg"></link>
       </Head>
       <DefaultSeo {...SEO} />
