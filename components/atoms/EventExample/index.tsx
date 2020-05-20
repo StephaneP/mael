@@ -1,4 +1,5 @@
 import { createRef, useEffect, useState } from "react";
+// import EventList from './EventList';
 import styles from "./styles.module.css";
 
 const listOfEvents = [
@@ -32,7 +33,7 @@ export default function EventExample() {
   const [list, setList] = useState<string[]>([]);
   useEffect(() => {
     const addEvent = (eventType: string) => {
-      return () => setList((l) => [eventType].concat(l.slice(0, 4)));
+      return () => setList((l) => [eventType].concat(l.reverse().slice(0, 4)).reverse());
     };
     if (ref.current) {
       listOfEvents.forEach((eventType) => {
@@ -54,14 +55,20 @@ export default function EventExample() {
           ✨ Click me! ✨
         </button>
       </div>
-      <div className={styles.events}>
-        {list.map((e, i) => [
-          <div key={`${e}${i}`} className={styles.event}>
-            {e}
-          </div>,
-          i === list.length - 1 ? null : <div className={styles.eventSpacer}>then</div>,
-        ])}
-      </div>
+      <EventList events={list} />
+    </div>
+  );
+}
+
+export function EventList({ events }: { events: string[] }) {
+  return (
+    <div className={styles.events}>
+      {events.map((e, i) => [
+        <div key={`${e}${i}`} className={styles.event}>
+          {e}
+        </div>,
+        i === events.length - 1 ? null : <div className={styles.eventSpacer}>then</div>,
+      ])}
     </div>
   );
 }

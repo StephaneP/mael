@@ -3,32 +3,95 @@ layout: "BlogPost"
 title: "React Native Click"
 tags: react, react-native, react-native-web, testing, bug
 createdAt: 2020-05-05T20:27:33.278Z
-modifiedAt: 2020-05-20T11:30:28.508Z
+modifiedAt: 2020-05-20T13:40:38.466Z
 ---
 
-import EventExample from "../../components/atoms/EventExample";
+import EventExample, { EventList } from "../../components/atoms/EventExample";
+
+# Introduction
 
 So here's the story of how I lost a few hours of my life figuring out some issues with some tests.
+
 Over at [Threads Styling](https://www.threadsstyling.com/) we use [react-native](https://reactnative.dev/) to write reusable components for both native, and web, using [react-native-web](https://github.com/necolas/react-native-web).
 This leads to a pretty sweey setup where we can write our components once and use them where ever we need them.
 
 Together with this we also use [Testing Library's](https://testing-library.com/) [@testing-library/react](https://www.npmjs.com/package/@testing-library/react) to write tests for our browser based applications.
 
-I was
+With React Native the way that you allow interactions with components is generally by wrapping them with some form of `Touchable` (there's a number of different flavours, `TouchableOpacity`, `TouchableWithoutFeedback`, etc) and using the `onPress` prop instead of `onClick` like you would on the web.
 
-- Explanation of background and discovery of problem
-- Explanation of investigation and discovery of react-native-web problem
-- Anatomy of a click
-- Work around decided on at the time
-- Conclude that @testing-library/user-event is best
+While writing some tests I ran into an interesting problem. I couldn't get the `onPress` handler to trigger. 🤔 Pretty odd. The test looked pretty simple, essentially:
 
-# Why
+```tsx
+test("button should do thing", () => {
+  // Render our component and get the button
+  const { getByText } = render(<Screen />);
 
-Here's some _markdown_ content!
+  // Doing something other things here
 
-And more
+  const btn = getByText("Click me");
 
-[see here](https://github.com/necolas/react-native-web/blob/5287044f403d881a13e17f140c5575ce0661587f/packages/react-native-web/src/exports/Touchable/index.js#L608-L615)
+  // Click the button
+  fireEvent.click(btn);
+
+  // Something updated telling us we clicked the button
+  getByText("Clicked!");
+});
+```
+
+But the test was unable to find something `Clicked`.
+
+> [icon:👨‍💻] I recently converted to querying by actual text instead of test IDs and the likes, due to reading this great blog post by [Kent C. Dodds](https://twitter.com/kentcdodds/), [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library).
+
+Time to dig a bit deeper.
+
+# Debugging
+
+Was I looking for the wrong thing maybe?
+
+Some steps had to happen before we got to our button we were trying to click, so I decided to start by checking the DOM before and after the click.
+
+When `getByText` throws, [it includes the state of the DOM](https://testing-library.com/docs/dom-testing-library/api-helpers#debugging), but only `7000` by default. You can whack that right up with the `DEBUG_PRINT_LIMIT` environment variable, doing something like `DEBUG_PRINT_LIMIT=10000 yarn test` to get a bit more.
+
+But I also wanted the state before we even tried to click the button, and I used [debug](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug) from the `render` call to do this, like so:
+
+```tsx
+test("button should do thing", () => {
+  // Render our component and get the button
+  const { getByText, debug } = render(<Screen />);
+
+  // Doing something other things here
+
+  debug();
+
+  const btn = getByText("Click me");
+
+  // Click the button
+  fireEvent.click(btn);
+
+  // Something updated telling us we clicked the button
+  getByText("Clicked!");
+});
+```
+
+> [icon:⚠️] Here I show how not to do it, ideally you should use `debug` from the `screen` given by `render`, as seen in [debug](https://testing-library.com/docs/dom-testing-library/api-queries#screendebug). But I only found out about this afterwards.
+
+After doing this, the DOM looked to be fine before we tried to click, and after clicking, nothing happened, so I'd gotten nowhere. But I was more confident on what _wasn't_ going on, so that's something.
+
+I then resorted to the tried and tested method of debugging - throwing `console.log` everywhere I could get at and seeing what came out.
+
+And I noticed a curious thing.
+
+The `onPress` wasn't getting called.
+
+But I was definitely firing an event clicking on it. How could this be?
+
+You'll remember that we use React Native to write out components, and for the web we use React Native for Web to "convert" these components and let us use them on the web for free.
+
+Was something going wrong there?
+
+I opened up React Native for Web and did some digging.
+
+In the main file for dealing with `Touchables` I found a [hint](https://github.com/necolas/react-native-web/blob/5287044f403d881a13e17f140c5575ce0661587f/packages/react-native-web/src/exports/Touchable/index.js#L608-L615).
 
 ```js:Touchable/index.js
 /**
@@ -41,7 +104,9 @@ And more
  */
 ```
 
-[this issue](https://github.com/necolas/react-native-web/issues/1422)
+Handling presses in React Native for Web uses a gesture responder system for these `Touchables`. And the gesture responder system doesn't care about the `click` events. To make the presses feel more like "presses", it responds to the "mousedown" and "mouseup" events in a click.
+
+To get what I mean here, let's dig into the anatomy of a click.
 
 Here's a quick interactive example of a button, and if you click on it it will tell you the events that are fired from it. You can see the source of the example [here](https://github.com/maael/mael/tree/master/components/atoms/EventExample).
 
@@ -49,11 +114,29 @@ Here's a quick interactive example of a button, and if you click on it it will t
 
 For a click, you should see something like:
 
-- mousedown
-- focus
-- mouseup
-- click
+<EventList events={["mousedown", "focus", "mouseup", "click"]} />
 
 If you're on mobile you'll see some `touchstart` and `touchend` events in there too.
 
 > [icon:ℹ️] I've omitted some events like `mousemove` etc that fire often and aren't that useful for what I'm trying to show.
+
+So React Native for Web doesn't care about our `click` events we're firing at it.
+
+# The Fix
+
+At the time, I wrote a quick util to handle firing clicks that were React Native for Web compatible, and moved on.
+
+```tsx:react-native-web-click.tsx
+export default function click(element) {
+  fireEvent.mousedown(element);
+  fireEvent.mouseup(element);
+}
+```
+
+It got us where we needed to be.
+
+But really, this isn't a great solution.
+
+Since doing this, I've started reading more around testing React, and I became aware of [@testing-library/user-event](https://github.com/testing-library/user-event), a library to handle all the quirks of events, that the simple `fireEvent` doesn't aim to solve. It's still work in progress, and looking for help, but the project is doing an admirable attempt to simulate events in a way much more closer to what actually happens in the browser.
+
+This is a much better solution, and using it should save time from these kinds of bugs in the future.
