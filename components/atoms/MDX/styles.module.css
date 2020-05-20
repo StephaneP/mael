@@ -116,5 +116,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+}
+
+.blockquoteIconInnerEmojisSuck {
+  font-size: 44px;
+  transform: scale(0.5);
 }

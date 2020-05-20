@@ -48,7 +48,9 @@ const Blockquote: FC = ({ children }) => {
       >
         {info.icon ? (
           <div className={styles.blockquoteIcon}>
-            <div className={styles.blockquoteIconInner}>{info.icon}</div>
+            <div className={styles.blockquoteIconInner}>
+              <div className={styles.blockquoteIconInnerEmojisSuck}>{info.icon}</div>
+            </div>
           </div>
         ) : (
           ""
