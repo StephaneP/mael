@@ -1,0 +1,72 @@
+.phone {
+  background-color: #000;
+  height: 200px;
+  width: 125px;
+  display: block;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phoneScreen {
+  height: 180px;
+  width: 110px;
+  margin-bottom: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.phoneBrowser {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.phoneBrowserBar {
+  height: 20px;
+  width: 100%;
+  background-color: #35353a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+.phoneBrowserLeftBtn {
+  width: 7px;
+  height: 7px;
+  background-color: #828384;
+  margin-right: 5px;
+}
+
+.phoneBrowserOmni {
+  background-color: #202123;
+  height: 8px;
+  flex: 1;
+  border-radius: 4px;
+}
+
+.phoneBrowserRightBtn {
+  width: 7px;
+  height: 7px;
+  background-color: #828384;
+  margin-left: 5px;
+}
+
+.phoneBrowserContent {
+  flex: 1;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
+.phoneBrowserBottomBar {
+  height: 15px;
+  width: 100%;
+  background-color: #35353a;
+}

@@ -1,0 +1,9 @@
+.controller {
+  display: initial;
+}
+
+@media (min-width: 800px) {
+  .controller {
+    display: none;
+  }
+}
