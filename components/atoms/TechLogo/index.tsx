@@ -6,7 +6,7 @@ const TechLogo: FC<{ name: string }> = ({ name }) => {
     <div className={styles.container}>
       <div
         style={{
-          backgroundImage: `url(/images/tech/logos/${name}.webp), url(/images/tech/logos/${name}.png)`,
+          backgroundImage: `url(/images/tech/logos/${name}.png)`,
         }}
         className={styles.img}
       />
