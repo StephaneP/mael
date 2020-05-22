@@ -11,10 +11,19 @@ export default function Phone({ src }: { src: string }) {
             <div className={styles.phoneBrowserRightBtn}></div>
             <div className={styles.phoneBrowserRightBtn}></div>
           </div>
-          <div
-            className={styles.phoneBrowserContent}
-            style={{ backgroundImage: `url(${src}.png)` }}
-          ></div>
+          <picture className={styles.phoneBrowserContentPicture}>
+            <source
+              srcSet={`${src}.webp`}
+              className={styles.phoneBrowserContentImage}
+              type="image/webp"
+            />
+            <img
+              src={`${src}.png`}
+              alt="Phone screen"
+              loading="lazy"
+              className={styles.phoneBrowserContentImage}
+            />
+          </picture>
           <div className={styles.phoneBrowserBottomBar}></div>
         </div>
       </div>

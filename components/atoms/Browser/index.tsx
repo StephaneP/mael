@@ -9,7 +9,16 @@ export default function Browser({ src }: { src: string }) {
         <div className={styles.browserBtn}></div>
         <div className={styles.browserOmni}></div>
       </div>
-      <div className={styles.browserContent} style={{ backgroundImage: `url(${src}.png)` }}></div>
+
+      <picture className={styles.browserContentPicture}>
+        <source srcSet={`${src}.webp`} className={styles.browserContentImage} type="image/webp" />
+        <img
+          src={`${src}.png`}
+          alt="Phone screen"
+          loading="lazy"
+          className={styles.browserContentImage}
+        />
+      </picture>
     </div>
   );
 }

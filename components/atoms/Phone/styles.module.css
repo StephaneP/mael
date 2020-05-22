@@ -59,12 +59,13 @@
   margin-left: 5px;
 }
 
-.phoneBrowserContent {
-  flex: 1;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
+.phoneBrowserContentPicture {
+  height: 150px;
+  width: 108px;
+}
+
+.phoneBrowserContentImage {
+  object-fit: cover;
 }
 
 .phoneBrowserBottomBar {
