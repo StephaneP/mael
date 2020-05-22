@@ -19,7 +19,23 @@
   font-size: 24px;
 }
 
+.content {
+  flex: 1;
+}
+
 .description {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.phoneWrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 800px) {
+  .content {
+    padding: 10px 20px;
+  }
 }
