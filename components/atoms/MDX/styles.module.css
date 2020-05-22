@@ -119,6 +119,7 @@
 }
 
 .blockquoteIconInnerEmojisSuck {
-  font-size: 44px;
-  transform: scale(0.5);
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
 }
