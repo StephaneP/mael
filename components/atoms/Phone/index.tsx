@@ -13,7 +13,7 @@ export default function Phone({ src }: { src: string }) {
           </div>
           <div
             className={styles.phoneBrowserContent}
-            style={{ backgroundImage: `url(${src})` }}
+            style={{ backgroundImage: `url(${src}.webp), url(${src}.png)` }}
           ></div>
           <div className={styles.phoneBrowserBottomBar}></div>
         </div>

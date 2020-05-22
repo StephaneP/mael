@@ -10,7 +10,7 @@ const projects: ProjectProps[] = [
     url: "https://mael.maael.now.sh",
     github: "https://github.com/maael/mael",
     images: {
-      web: "/images/sites/web/mael.png",
+      web: "/images/sites/web/mael",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "mdx"],
     description: (
@@ -22,7 +22,7 @@ const projects: ProjectProps[] = [
     url: "https://cvbanks.review/",
     github: "https://github.com/maael/coronavirus-banks",
     images: {
-      web: "/images/sites/web/cvbanks.png",
+      web: "/images/sites/web/cvbanks",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -39,7 +39,7 @@ const projects: ProjectProps[] = [
     url: "https://majority-plays.herokuapp.com/",
     github: "https://github.com/maael/majority-plays",
     images: {
-      web: "/images/sites/web/majority-plays.png",
+      web: "/images/sites/web/majority-plays",
     },
     tech: [
       "js",
@@ -66,7 +66,7 @@ const projects: ProjectProps[] = [
     url: "https://nook.services",
     github: "https://github.com/maael/nook",
     images: {
-      web: "/images/sites/web/nook.png",
+      web: "/images/sites/web/nook",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "fauna", "aws"],
     description: (
@@ -84,7 +84,7 @@ const projects: ProjectProps[] = [
     url: "https://tem.tools",
     github: "https://github.com/maael/temtem",
     images: {
-      web: "/images/sites/web/temtem.png",
+      web: "/images/sites/web/temtem",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "fauna"],
     description: (
@@ -99,7 +99,7 @@ const projects: ProjectProps[] = [
     url: "https://temtem-api.mael.tech",
     github: "https://github.com/maael/temtem-api",
     images: {
-      web: "/images/sites/web/temtem-api.png",
+      web: "/images/sites/web/temtem-api",
     },
     tech: ["js", "typescript", "react", "circleci", "nextjs", "vercel"],
     description: (
@@ -115,7 +115,7 @@ const projects: ProjectProps[] = [
     url: "https://pocketcraft.trade",
     github: "https://github.com/maael/ffxivpocketcraft",
     images: {
-      web: "/images/sites/web/pocketcraft.png",
+      web: "/images/sites/web/pocketcraft",
     },
     tech: ["js", "typescript", "react", "mongodb", "circleci", "docker", "dokku", "digitalocean"],
     description: (
@@ -131,7 +131,7 @@ const projects: ProjectProps[] = [
     url: "https://copycat.mael.xyz",
     github: "https://github.com/maael/copycat",
     images: {
-      web: "/images/sites/web/copycat.png",
+      web: "/images/sites/web/copycat",
     },
     tech: ["js", "typescript", "react", "socketio", "circleci", "docker", "dokku", "digitalocean"],
     description: (
