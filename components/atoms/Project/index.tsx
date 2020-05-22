@@ -41,10 +41,10 @@ const Project: FC<Props> = ({ github, title, url, description, images, tech }) =
           <div className={styles.content}>
             <div className={styles.row}>
               <p className={styles.title}>{title}</p>
-              <a className={styles.ghIcon} href={github}>
+              <a className={styles.ghIcon} href={github} title={`Go to ${github}`}>
                 <FaGithub />
               </a>
-              <a className={styles.linkIcon} href={url}>
+              <a className={styles.linkIcon} href={url} title={`Go to ${url}`}>
                 <FaLink />
               </a>
             </div>
