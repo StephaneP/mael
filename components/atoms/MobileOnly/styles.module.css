@@ -1,5 +1,6 @@
 .controller {
-  display: initial;
+  display: flex;
+  flex: 1;
 }
 
 @media (min-width: 800px) {

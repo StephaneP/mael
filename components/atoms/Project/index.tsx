@@ -1,5 +1,7 @@
 import { FC, ReactNode } from "react";
 import { FaGithub, FaLink } from "react-icons/fa";
+import Separator from "../Separator";
+import TechLogo from "../TechLogo";
 import Phone from "../Phone";
 import Browser from "../Browser";
 import MobileOnly from "../MobileOnly";
@@ -12,19 +14,22 @@ export interface Props {
   url: string;
   github: string;
   description: ReactNode;
+  tech: string[];
   images: {
     web?: string;
     mobile?: string;
   };
 }
 
-const Project: FC<Props> = ({ github, title, url, description, images }) => {
+const Project: FC<Props> = ({ github, title, url, description, images, tech }) => {
   return (
     <div className={styles.wrapper}>
       <AdaptiveSplit>
         <AdaptiveSection>
           <DesktopOnly>
-            <Browser src={images.web || ""} />
+            <div className={styles.webWrapper}>
+              <Browser src={images.web || ""} />
+            </div>
           </DesktopOnly>
           <MobileOnly>
             <div className={styles.phoneWrapper}>
@@ -44,6 +49,16 @@ const Project: FC<Props> = ({ github, title, url, description, images }) => {
               </a>
             </div>
             <div className={styles.description}>{description}</div>
+            {tech.length ? (
+              <>
+                <Separator label="Tech" />
+                <div className={styles.techContainer}>
+                  {tech.map((t) => (
+                    <TechLogo key={t} name={t} />
+                  ))}
+                </div>
+              </>
+            ) : null}
           </div>
         </AdaptiveSection>
       </AdaptiveSplit>

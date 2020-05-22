@@ -1,9 +1,10 @@
 .controller {
   display: none;
+  flex: 1;
 }
 
 @media (min-width: 800px) {
   .controller {
-    display: initial;
+    display: flex;
   }
 }
