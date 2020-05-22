@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 5px 5px 0px rgba(24, 25, 28, 0.8);
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.9);
 }
 
 .phoneScreen {
@@ -17,6 +17,7 @@
   margin-bottom: 2px;
   border-radius: 3px;
   overflow: hidden;
+  border: 1px solid #35353a;
 }
 
 .phoneBrowser {

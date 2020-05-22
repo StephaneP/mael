@@ -5,7 +5,7 @@
   display: block;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0px 5px 5px 0px rgba(24, 25, 28, 0.8);
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.9);
 }
 
 .browserBar {
