@@ -11,9 +11,13 @@ export interface Props {
   url: string;
   github: string;
   description: ReactNode;
+  images: {
+    web?: string;
+    mobile?: string;
+  };
 }
 
-const Project: FC<Props> = ({ github, title, url, description }) => {
+const Project: FC<Props> = ({ github, title, url, description, images }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
@@ -26,10 +30,10 @@ const Project: FC<Props> = ({ github, title, url, description }) => {
         </a>
       </div>
       <DesktopOnly>
-        <Browser src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Autocomplete_1.max-1000x1000.png" />
+        <Browser src={images.web || ""} />
       </DesktopOnly>
       <MobileOnly>
-        <Phone src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Autocomplete_1.max-1000x1000.png" />
+        <Phone src={images.mobile || images.web || ""} />
       </MobileOnly>
       <div className={styles.description}>{description}</div>
     </div>

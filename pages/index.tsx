@@ -40,6 +40,11 @@ export default function IndexPage() {
                   <FaEnvelope />
                 </div>
               </a>
+              <a href="https://cv.mael.tech" title="CV | Matthew Elphick">
+                <div className={styles.socialItem} style={{ backgroundColor: "var(--red)" }}>
+                  CV
+                </div>
+              </a>
             </div>
           </>
         </PageWrapper>
@@ -61,7 +66,7 @@ function Sections() {
       </div>
       <PostsSection />
       <div className={styles.sectionSelect}>
-        <div className={styles.sectionTitle}>Personal Projects</div>
+        <div className={styles.sectionTitle}>Projects</div>
       </div>
       <ProjectsSection />
       <div className={styles.sectionSelect}>
