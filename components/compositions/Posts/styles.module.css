@@ -1,7 +1,21 @@
-.card {
+.card,
+.readMore {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.readMore {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.readMoreArrow {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 72px;
 }
 
 .cardTop {
