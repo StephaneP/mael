@@ -19,6 +19,7 @@ pre[class*="language-"] {
   font-size: 14px;
   color: #76d9e6;
   text-shadow: none;
+  line-height: 18px;
 }
 
 pre[class*="language-"] {
