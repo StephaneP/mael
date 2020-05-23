@@ -1,6 +1,7 @@
 export interface FrontMatter {
   __resourcePath: string;
   slug: string;
+  draft: boolean;
   domain: string;
   tags: string[];
   title: string;

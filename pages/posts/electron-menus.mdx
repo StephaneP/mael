@@ -1,0 +1,42 @@
+---
+layout: "BlogPost"
+title: "Updating Electron Menus"
+tags: electron, learning
+draft: true
+createdAt: 2020-05-23T19:30:09.161Z
+modifiedAt: 2020-05-23T19:57:32.124Z
+---
+
+# Introduction
+
+For a recent project of mine, [Majority Plays](), I need to make a small desktop app to run as a tray application.
+
+The basic requirements were to allow the user to do two things:
+
+- Connect/disconnect to "rooms" on the website
+- Press the keys voted on by other people on the website.
+
+I also wanted to get it done fast, as I wanted to try to finish the majority of the project in a day after coming up with it.
+
+For speed, I chose to make a quick electron app, as I know JavaScript, and have used Electron before.
+
+I was set up pretty quickly.
+
+However I ran into a problem.
+
+# The problem
+
+The app was essentially just an electron [Menu](https://www.electronjs.org/docs/api/menu) added to a [Tray](https://www.electronjs.org/docs/api/tray).
+
+Dead simple, run something like this:
+
+```js:simple_tray_menu.js
+```
+
+And :boom:, a tray app with a menu.
+
+However, I wanted to update the items in the menu to reflect the disconnected/connecting/connected states the app can be in while joining a room.
+
+And the `Menu` in electron, is kind of dynamic, but kind of not. [You can set `enabled`, `visble` and `checked` dynamically](https://github.com/electron/electron/issues/937#issuecomment-67543939), _but_ [you can't add/remove/update labels of items dynamically](https://github.com/electron/electron/issues/846).
+
+This is a bummer.

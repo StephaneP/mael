@@ -21,6 +21,7 @@ const Posts: FC = () => {
               <Link href={page.slug}>
                 <a title={page.title}>
                   <div className={styles.card}>
+                    {page.draft ? <div className={styles.draft}>Draft</div> : null}
                     <div className={styles.cardTop}>
                       <div className={styles.cardReadingTime}>{page.readingTime.text}</div>
                       <div className={styles.cardDatetime}>

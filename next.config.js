@@ -24,7 +24,13 @@ const mdxOptions = {
         readingTime: readingTime(mdxContent),
         slug: `/${frontMatter.__resourcePath.replace(/\.mdx$/, "")}`,
         domain: process.env.NODE_ENV === "production" ? seoUrl : "http://localhost:3000",
-        tags: frontMatter.tags ? frontMatter.tags.split(",").map((i) => i.trim()) : [],
+        tags: [
+          ...new Set(
+            (frontMatter.tags ? frontMatter.tags.split(",").map((i) => i.trim()) : []).concat(
+              frontMatter.draft ? ["draft"] : []
+            )
+          ),
+        ],
       };
     },
   },

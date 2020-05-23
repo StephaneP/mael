@@ -37,3 +37,19 @@
 .cardDatetime {
   font-weight: normal;
 }
+
+.draft {
+  font-weight: bold;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  transform: rotate(-45deg);
+  font-size: 40px;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
