@@ -1,0 +1,57 @@
+.browser {
+  margin: 5px 0px;
+}
+
+.browserBar {
+  background-color: var(--code-bg);
+  height: 30px;
+  width: 100%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 5px;
+}
+
+.browserBtn {
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+  border-radius: 50%;
+}
+
+.browserBtn:nth-of-type(1) {
+  background-color: #ff605c;
+}
+
+.browserBtn:nth-of-type(2) {
+  background-color: #ffbd44;
+}
+
+.browserBtn:nth-of-type(3) {
+  background-color: #00ca4e;
+}
+
+.browserContent {
+  background-color: var(--code-bg);
+  padding: 10px 20px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.lang {
+  background-color: var(--red);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+  top: 5px;
+  position: relative;
+  font-size: 14px;
+}
