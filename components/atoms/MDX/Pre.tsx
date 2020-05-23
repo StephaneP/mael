@@ -1,7 +1,6 @@
 import styles from "./pre.module.css";
 
 export default function Pre({ children, ...args }) {
-  console.info(children);
   if (children.props.mdxType === "code") {
     const lang = args.className.split("-").slice(1).join("-");
     return (
