@@ -32,6 +32,7 @@
 
 .content {
   background-color: var(--foreground);
+  border-top: 1px solid var(--dark);
   padding: 20px 10px 40px 10px;
   min-height: 50vh;
 }

@@ -45,6 +45,7 @@
 
 .bottom {
   background: var(--foreground);
+  border-top: 1px solid var(--dark);
   padding: 20px 0px;
 }
 
