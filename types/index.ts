@@ -15,3 +15,18 @@ export interface FrontMatter {
     words: number;
   };
 }
+
+export interface BggResponse {
+  items: {
+    totalitems: number;
+    item: Array<{
+      subtype: string;
+      objectid: string;
+      image: string;
+      thumbnail: string;
+      name: {
+        $t: string;
+      };
+    }>;
+  };
+}

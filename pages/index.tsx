@@ -3,6 +3,7 @@ import PageWrapper from "../components/atoms/PageWrapper";
 import PostsSection from "../components/compositions/Posts";
 import TimelineSection from "../components/compositions/Timeline";
 import ProjectsSection from "../components/compositions/Projects";
+import BoardgamesSection from "../components/compositions/Boardgames";
 import styles from "../styles/pages/index.module.css";
 
 export default function IndexPage() {
@@ -73,6 +74,10 @@ function Sections() {
         <div className={styles.sectionTitle}>Work and Stuff</div>
       </div>
       <TimelineSection />
+      <div className={styles.sectionSelect}>
+        <div className={styles.sectionTitle}>Boardgames</div>
+      </div>
+      <BoardgamesSection />
     </>
   );
 }
