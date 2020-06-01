@@ -1,8 +1,5 @@
 import { FC } from "react";
 import Project, { Props as ProjectProps } from "../../atoms/Project";
-import Separator from "../../atoms/Separator";
-import TechLogo from "../../atoms/TechLogo";
-import styles from "./styles.module.css";
 
 const projects: ProjectProps[] = [
   {
