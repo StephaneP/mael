@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 const projects: ProjectProps[] = [
   {
     title: <>Personal Site</>,
-    url: "https://mael.maael.now.sh",
+    url: "https://mael.tech",
     github: "https://github.com/maael/mael",
     images: {
       web: "/images/sites/web/mael",
