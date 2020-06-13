@@ -7,6 +7,9 @@ import { FrontMatter } from "../types";
 import styles from "../styles/layouts/blogPost.module.css";
 
 export default (frontMatter: FrontMatter) => {
+  const api = "https://i.microlink.io/";
+  const cardUrl = `https://cards.microlink.io/?preset=rauchg&logo=https%3A%2F%2Fmael.tech%2Fimages%2Fme.jpeg&domain=mael.tech&color=%23fd015d&bg=%23202020&title=${frontMatter.title}`;
+  const image = `${api}${encodeURIComponent(cardUrl)}`;
   return ({ children: content }) => {
     return (
       <div>
@@ -20,6 +23,7 @@ export default (frontMatter: FrontMatter) => {
           openGraph={{
             title: `Matt Elphick | ${frontMatter.title}`,
             url: `${frontMatter.domain}${frontMatter.slug}`,
+            images: [{ url: image }],
           }}
         />
         <div className={styles.headerContainer}>
