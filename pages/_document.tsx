@@ -38,7 +38,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="dark-mode">
         <Head>
           <script dangerouslySetInnerHTML={{ __html: darkModeJs }} />
           <link
