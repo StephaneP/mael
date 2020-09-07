@@ -1,0 +1,31 @@
+.wrapper {
+  /* To scope */
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 10px 50px 10px;
+}
+
+.wrapper a {
+  color: var(--color-primary-text);
+}
+
+.wrapper h1 a {
+  color: var(--color-primary-text);
+}
+
+.wrapper h2 a,
+.wrapper h3 a,
+.wrapper h4 a,
+.wrapper h5 a,
+.wrapper h6 a {
+  color: var(--color-secondary-text);
+}
+
+.wrapper pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.wrapper img {
+  margin: 5px auto 10px auto;
+}

@@ -1,0 +1,78 @@
+export const meta = {
+  layout: "post",
+  title: "Project: Temtem API",
+  tags: "project,games,api,nextjs,io-ts,ci",
+  createdAt: "21/05/20",
+};
+
+import Browser from "../../components/Browser";
+import Center from "../../components/Center";
+
+<Center>
+  <Browser src={require("../../assets/projects/temtem-api.png")} />
+</Center>
+
+# Introduction
+
+A while back I found out about a new game, similar to Pokemon, called [Temtem](https://crema.gg/games/temtem/). It was another game where you collect creatures and fight battles with them, but it was on the PC, and it was an MMO, so you'd get to play with other people. It looked pretty interesting, and I wanted to back a new contender to Pokemon, and so I signed up to help test it, and after the testing phase, I got it when it was released on early access.
+
+It was pretty fun, and some of my friends got it too, but after a while we ran out of content (the nature of lots of early access games). But fortunately, Temtem still had much more to give me.
+
+I got thinking about things to build around the game, such as a website to track what creatures you'd caught, and where to catch them, a marketplace to arrange trades between players, and a place to track your progress on quests in the game (the game will eventually have some of these things, but doesn't have them yet).
+
+But to do any of these things, I'd need the data. The available creatures and their information, the quests, and so on. As an early access game the developers obviously have better things to be doing than to make some kind of API to get all that from. After hunting around, I found the [Official Temtem Wiki](https://temtem.gamepedia.com/Temtem_Wiki). This was great, but it was a wiki, and the game is new and still in development, so it's a living document, new things are added all the time, or being corrected. Also, a wiki isn't the easiest thing to get data out of.
+
+So I scoped up the things I wanted:
+
+- I wanted the data to be available from some API as JSON
+- I wanted the data to be as up to date as possible, and capable of doing so without manual intervention
+- I wanted the data to be safe even with the automatic updates, no breaking changes to the data shape
+- I wanted the API to be free to host and maintain
+
+# Wiki ⇨ JSON
+
+To do this, I decided I would keep it simple, and just scrape the wiki and _[wrangle](https://en.wikipedia.org/wiki/Data_wrangling)_ the data into the JSON format I wanted. I used two packages mainly to do this.
+
+[got](https://www.npmjs.com/package/got) - this is just yet another HTTP request library. A nice API, gets me where I want to be.
+
+```js:got_example.js
+import got from "got";
+
+(async () => {
+  const { body } = await got("http://someurl.com");
+
+  console.info(body);
+})();
+```
+
+[cheerio](https://www.npmjs.com/package/cheerio) - a nice and fast tool to manipulate and parse DOM (or any XML). It has an API very similar to jQuery too, which is handy as it makes writing it much easier if you've used jQuery before.
+
+```js:cheerio_example.js
+import cheerio from "cheerio";
+
+const $ = cheerio.load('<div><p class="test">Something</p></div>');
+
+console.info($(".test").text()); // 'Something'
+```
+
+With these two packages it was relatively straightforward to write scripts to get the HTML for pages on the Wiki and then to grab data out of them. The trickiest bit of it all was a grip of the DOM structure in my head to know how to write selectors to grab what I wanted.
+
+# Automatic Updates
+
+# Making it all safe
+
+[io-ts]()
+
+```js:codec.js
+```
+
+```js:using_codec.js
+```
+
+# Hosting it
+
+- Explanation of Temtem + API for it
+- Goal of creating something used by others
+- Scraping the wiki with cheerio + got
+- Running consistently (circle ci)
+- Safety of the API (io-ts integration)

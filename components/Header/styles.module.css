@@ -1,0 +1,93 @@
+.header {
+  background: var(--color-primary-bg);
+  color: var(--color-primary-bg-text);
+  padding: 10px 30px;
+}
+
+.centeredRow {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  padding: 0px 10px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  filter: invert(1);
+}
+
+.headerName {
+  margin-left: 15px;
+  font-size: 48px;
+  font-weight: bold;
+  display: var(--desktop-only-display);
+}
+
+.headerDesc {
+  flex: 3;
+  display: var(--desktop-only-display);
+}
+
+.headerSocials {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
+
+.headerSocialIcon {
+  filter: invert(1);
+}
+
+.headerSocials > *:hover {
+  transform: translateY(-2px);
+  transition: transform ease 0.3s;
+}
+
+.headerSocialCVIcon {
+  color: var(--color-primary-bg-text);
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.headerLink {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: var(--color-primary-bg-text);
+  padding: 0px 5px;
+  margin-right: 5px;
+}
+
+.headerLink:hover,
+.headerLink.current {
+  border-bottom: 2px solid var(--color-primary-bg-text);
+}
+
+.headerTrim {
+  height: 0px;
+  margin-bottom: 5px;
+}
+
+@media screen and (min-width: 992px) {
+  .headerLink {
+    font-size: 2rem;
+  }
+
+  .headerSocials {
+    padding-top: 0;
+  }
+
+  .headerTrim {
+    height: 50px;
+    width: 100vw;
+  }
+}
