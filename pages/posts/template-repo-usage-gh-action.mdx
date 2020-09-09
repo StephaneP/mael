@@ -1,0 +1,85 @@
+export const meta = {
+  layout: "post",
+  title: "Template Repository Usage GitHub Action",
+  tags: "github, learning",
+  createdAt: "09/09/20",
+};
+
+# The problem
+
+At my work, we started off with a written guideline doc, with opinions around tooling and practices when starting a new project. Over time though, it became repetitive to go between those guidelines and the new project, capturing all those things. So we decided to move to taking advantage of the [Repository Templates](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/) feature that GitHub had released, to speed up bootstrapping new projects.
+
+This worked great for us, and let us get productive with a new project right from the get go. Excellent.
+
+However, patterns and tooling evolve over time, as we try to leverage the best tooling available at the time, and as we become aware of it.
+
+We strive to keep our templates as up to date as possible, but then the older projects generated from the templates can miss out on these updates.
+
+And GitHub doesn't make it easy to find what projects have been generated from a template repisitory - at least at the time of writing this I'm not aware of any.
+
+Recently I've been dabbling with GitHub actions, and there's quite a few actions out there that update READMEs to include some kind of information, kept up to date automatically.
+
+So how about we solve our template repository with a GitHub action?
+
+# Investigating
+
+My first thought was to crack open [Insomnia](https://insomnia.rest) to see whether the GitHub API gives us a way to figure out what we need, either what template a repository was generated from, or what repositories have been generated from a template. While the second option was a bust, I found that in the GitHub API, repositories have a `templateRepository` relation, bingo.
+
+With this GraphQL query:
+
+```js Query
+query {
+  organization (login: "OrgHere") {
+    repositories (first: 100) {
+      nodes {
+        name
+        templateRepository {
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+I got back something like this:
+
+```js Response
+{
+  "data": {
+    "organization": {
+      "repositories": {
+        "nodes": [
+          {
+            "name": "repo1",
+            "templateRepository": null
+          },
+          {
+            "name": "repo2",
+            "templateRepository": {
+              "name": "templateRepo"
+            }
+          },
+          // And so on
+        ]
+      }
+    }
+  }
+}
+```
+
+You'd think if it's there in the API you'd be able to search it. Maybe one day.
+
+Anyway, that's great, because now we have a way to get what we need to know. We just have to get all the organisation repositories, and check what repositories have a template repo.
+
+> There's a bit of a limitation here, as we'll be targetting orgs specifically, meaning the action won't be too useful for public template repositories want to know what other public repositories were generated from them. But that's fine for me, as I'm doing this with a view for using it for work.
+
+# Creating the GitHub action
+
+I've never written a GitHub action before, so I took a look and found a good template repository to use as a basis for TypeScript actions, [@actions/typescript-action](https://github.com/actions/typescript-action).
+
+I hit the `Use this template` button, and took a look at what I got.
+
+Taking a look through the [toolkits](https://github.com/actions/toolkit/blob/master/README.md#packages) available, I found the [@actions/github](https://github.com/actions/toolkit/tree/master/packages/github), which looked perfect, it should allow me to do the query I did previously, but authenticated in the context of where the action was running - allowing the access to the organizations repositories list that the action will need.
+
+Part way through I found this super helpful [blog post about your first GitHub action](https://notiz.dev/blog/build-and-publish-your-first-github-action#quickstart).
