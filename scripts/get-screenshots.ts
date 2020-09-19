@@ -12,7 +12,7 @@ async function run() {
       try {
         const page = await browser.newPage();
         await page.goto(d.url, { waitUntil: "networkidle0", timeout: 60000 });
-        await page.setViewport({ width: 1920, height: 1080 });
+        await page.setViewport({ width: 1920, height: 1280 });
         await page.screenshot({
           path: `./assets/projects/${name}.png`,
           type: "png",
