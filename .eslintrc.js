@@ -39,6 +39,10 @@ module.exports = {
     "import/no-unresolved": [0],
     "global-require": [0],
     "no-nested-ternary": [0],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { devDependencies: ["./scripts/*"] },
+    ],
   },
   globals: {
     React: "writable",
