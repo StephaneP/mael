@@ -6,6 +6,11 @@ export interface BasicProject {
 
 const projects: BasicProject[] = [
   {
+    title: "Video Hydra",
+    url: "https://vidhydra.mael.tech",
+    github: "https://github.com/maael/hydratwitch",
+  },
+  {
     title: "Personal Site",
     url: "https://mael.tech",
     github: "https://github.com/maael/mael",

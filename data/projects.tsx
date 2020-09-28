@@ -18,6 +18,28 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: "Video Hydra",
+    url: "https://vidhydra.mael.tech",
+    github: "https://github.com/maael/hydratwitch",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/hydratwitch.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/hydratwitch.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel"],
+    description: (
+      <>
+        A place to watch as many twitch streams, twitch chats, or youtube videos
+        as you want, however you want. Add items as tiles, and resize them, drag
+        and drop them, however you want. It saves what you&apos;re watching and
+        the layouts to your browser, and creates a sharable URL. An idea
+        suggested by a friend, that I implemented in ~2 days.
+      </>
+    ),
+  },
+  {
     title: "Personal Site",
     url: "https://mael.tech",
     github: "https://github.com/maael/mael",
