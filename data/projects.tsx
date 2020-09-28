@@ -42,9 +42,9 @@ const projects: Project[] = [
     github: "https://github.com/maael/dedupotron",
     images: {
       web: {
-        defaultImage: require("../assets/projects/mael.png"),
+        defaultImage: require("../assets/projects/dedupotron.png"),
         defaultImageMime: "image/png",
-        webp: require("../assets/projects/mael.png?webp"),
+        webp: require("../assets/projects/dedupotron.png?webp"),
       },
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
@@ -58,13 +58,13 @@ const projects: Project[] = [
   },
   {
     title: "Invocation Game",
-    url: "https://invocation-game.vercel.app/",
+    url: "https://invocation.mael.tech/",
     github: "https://github.com/maael/invocation-game",
     images: {
       web: {
-        defaultImage: require("../assets/projects/mael.png"),
+        defaultImage: require("../assets/projects/invocation.png"),
         defaultImageMime: "image/png",
-        webp: require("../assets/projects/mael.png?webp"),
+        webp: require("../assets/projects/invocation.png?webp"),
       },
     },
     tech: ["js", "typescript", "phaser", "nextjs", "vercel"],
@@ -81,9 +81,9 @@ const projects: Project[] = [
     github: "https://github.com/maael/coronavirus-banks",
     images: {
       web: {
-        defaultImage: require("../assets/projects/cvbanks.png"),
+        defaultImage: require("../assets/projects/coronavirus-banks.png"),
         defaultImageMime: "image/png",
-        webp: require("../assets/projects/cvbanks.png?webp"),
+        webp: require("../assets/projects/coronavirus-banks.png?webp"),
       },
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
