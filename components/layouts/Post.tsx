@@ -21,10 +21,16 @@ export default function Post({
       />
       <Header />
       <div className={styles.wrapper}>
-        <Link href="/posts">
-          <a>Back to posts</a>
-        </Link>
-        <div>{meta.title}</div>
+        <div className={styles.topbar}>
+          <Link href="/posts">
+            <a title="Back to posts">
+              <span role="img" aria-label="Back to posts">
+                ⬅️
+              </span>
+            </a>
+          </Link>
+          <h1 className={styles.title}>{meta.title}</h1>
+        </div>
         {children}
       </div>
     </>

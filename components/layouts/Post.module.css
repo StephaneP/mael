@@ -1,7 +1,7 @@
 .wrapper {
   /* To scope */
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
   padding: 0 10px 50px 10px;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .wrapper h1 a {
-  color: var(--color-primary-text);
+  color: var(--color-secondary-text);
 }
 
 .wrapper h2 a,
@@ -28,4 +28,26 @@
 
 .wrapper img {
   margin: 5px auto 10px auto;
+}
+
+.wrapper p {
+  margin: 2em 0px;
+  font-size: 1.1em;
+}
+
+.title {
+  color: var(--color-primary-text);
+  font-size: 2.2em;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
+.topbar > *:first-of-type {
+  padding-right: 1em;
 }
