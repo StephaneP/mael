@@ -31,6 +31,21 @@ export default function Post({
           </Link>
           <h1 className={styles.title}>{meta.title}</h1>
         </div>
+        {meta.draft ? (
+          <div className={styles.wipWarning}>
+            <div>
+              <span role="img" aria-label="Warning">
+                ⚠️
+              </span>
+              This post is a work in progress
+              <span role="img" aria-label="Warning">
+                ⚠️
+              </span>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         {children}
       </div>
     </>

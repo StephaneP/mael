@@ -12,6 +12,7 @@ export interface PostMeta {
   tags: string;
   createdAt: string;
   readingTime: ReturnType<typeof readingTime>;
+  draft?: boolean;
 }
 
 export interface PostProps {
