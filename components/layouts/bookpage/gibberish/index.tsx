@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import { Meta } from "../../../../util/staticProps/book";
 import getPostCard from "../../../../util/getPostCard";
 import TableOfContentsDataRaw from "./contents";
+import styles from "./styles.module.css";
 
 export default function GibberishPage(
   props: PropsWithChildren<{ meta: Meta }>
@@ -19,9 +20,15 @@ export default function GibberishPage(
           images: [{ url: getPostCard(`${meta.book} | ${meta.title}`) }],
         }}
       />
-      {meta.book}
-      <TableOfContents />
-      {children}
+      <div className={styles.wrapper}>
+        <div className={styles.title}>{meta.book}</div>
+        <div>
+          <div style={{ float: "right", paddingLeft: 50, paddingBottom: 20 }}>
+            <TableOfContents />
+          </div>
+          <div>{children}</div>
+        </div>
+      </div>
     </>
   );
 }
@@ -53,7 +60,13 @@ function Block({ v }: { v: TableOfContentsSection }) {
     <div>
       <div>
         <Link href={v.url}>
-          <a style={router.pathname === v.url ? { color: "red" } : {}}>
+          <a
+            style={
+              router.pathname === v.url
+                ? { color: "var(--color-primary-text)" }
+                : {}
+            }
+          >
             {v.name}
           </a>
         </Link>
