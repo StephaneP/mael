@@ -9,8 +9,9 @@
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --ignore-path .gitignore --write .",
-    "lint": "eslint -c .eslintrc.js --ext .tsx,.ts pages",
-    "get-screenshots": "ts-node-script scripts/get-screenshots"
+    "lint": "eslint -c .eslintrc.js --ext .tsx,.ts .",
+    "get-screenshots": "ts-node-script scripts/get-screenshots",
+    "generate-books-contents": "ts-node-script scripts/generate-books-contents"
   },
   "husky": {
     "hooks": {
@@ -18,7 +19,10 @@
     }
   },
   "lint-staged": {
-    "*.{json,md,mdx,css}": "yarn prettier",
+    "*.{json,md,mdx,css}": [
+      "yarn generate-books-contents",
+      "yarn prettier"
+    ],
     "*.{js,jsx,tsx,ts}": [
       "yarn prettier",
       "yarn lint --fix"
@@ -55,6 +59,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
+    "glob": "^7.1.6",
     "husky": "^4.2.5",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",

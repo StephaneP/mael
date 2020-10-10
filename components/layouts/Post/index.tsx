@@ -1,9 +1,9 @@
 import { PropsWithChildren } from "react";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import Header from "../Header";
-import { PostMeta } from "../../util/staticProps/posts";
-import getPostCard from "../../util/getPostCard";
+import Header from "../../Header";
+import { PostMeta } from "../../../util/staticProps/posts";
+import getPostCard from "../../../util/getPostCard";
 import styles from "./Post.module.css";
 
 export default function Post({

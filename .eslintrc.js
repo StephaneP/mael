@@ -43,6 +43,8 @@ module.exports = {
       "error",
       { devDependencies: ["./scripts/*"] },
     ],
+    "no-await-in-loop": [0],
+    "no-restricted-syntax": [0],
   },
   globals: {
     React: "writable",
