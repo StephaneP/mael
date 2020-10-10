@@ -26,7 +26,12 @@ export default function GibberishPage(
           <div style={{ float: "right", paddingLeft: 50, paddingBottom: 20 }}>
             <TableOfContents />
           </div>
-          <div>{children}</div>
+          <div>
+            <h1>
+              <a>{meta.title}</a>
+            </h1>
+            {children}
+          </div>
         </div>
       </div>
     </>
