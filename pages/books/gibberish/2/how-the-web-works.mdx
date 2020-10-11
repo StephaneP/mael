@@ -1,0 +1,57 @@
+export const meta = {
+  layout: "bookpage",
+  book: "Gibberish to a website",
+  bookShort: "gibberish",
+  title: "How the Web Works",
+  chapter: 2,
+  section: 3,
+  createdAt: "05/05/20",
+};
+
+How we have a rough idea of what a website is comprised of, let's run through how they work. What does it look like, every time you go to a website? Again, while not necessarily immediately useful, getting this context now establishes a good understanding to build on, it helps having an idea on what the underlying stuff is all doing.
+
+So, let's start at the beginning. You open your browser, Chrome/Firefox/Internet Explorer, and you type in https://google.com, and hit enter.
+
+Question number 1. How does your computer know where on the internet to look for https://google.com? There's a lot of stuff on the internet after all.
+
+## What exactly is https://google.com anyway
+
+https://google.com is what we call a _URL_, you've probably heard that before, but do you know what it means? URL is short for Uniform Resource Locator, and what **that** means is it's a thing to know the location of another thing. Sort of think about it like the address of your house, except for a website. It's why URLs are also often called "web addresses".
+
+Like an address, a URL is comprised of multiple parts. Let's break it down a bit.
+
+<div style={{ textAlign: "center" }}>
+  <span style={{ color: "red" }}>https</span>://
+  <span style={{ color: "lightgreen" }}>google.com</span>
+  <span style={{ color: "lightblue" }}>/watch</span>
+  <span style={{ color: "pink" }}>?key=value</span>
+  <span style={{ color: "yellow" }}>#somewhere</span>
+</div>
+
+You'll see I've taken a bit of artistic license and added a bit on to the end of https://google.com - it's just so I can talk about it a bit, so bear with me.
+
+The green part, is what we call `https` the <span style={{color: "red"}}>_protocol_</span>. Now this is a little bit more complicated than what we need to dig into here, but essentially it's the language to use when your browser is getting the data from the server (remember, a server is just another computer somewhere else on the internet). For websites the only ones you really need to know about are `http` and `https`.
+
+The green part, `google.com` is what we call the <span style={{color: "lightgreen"}}>_domain name_</span>. While the protocol was the language to use then talking to the server, the domain name is like the address of the server on the internet, where it lives, and where to go to to get things from it. We'll talk about these more later on.
+
+The blue part, `/watch` is the path. If you think of each website as a city, then the <span style={{color: "lightgreen"}}>_domain name_</span> is the name of the city, and the <span style={{color: "lightblue"}}>_path_</span> is the directions inside that city, to get to what you want.
+
+Then you have the pink section, `?key=value`. This is the <span style={{color: "pink"}}>_query string_</span>, also known as <span style={{color: "pink"}}>_parameters_</span>. These are just like extra pieces of information that you give to the page, so they know why you're going to the page, and can make sure they give you want you want, except each city (website) handles these differently. You write them in pairs, with `key=value`, where `key` is sort of the name of the extra piece of information, so we know what it is, and `value` is the actual information itself. You can have multiple parameters, linking them with ampersands, `&`, like `?key=value&key2=value2` etc.
+
+Finally you have the yellow part, `#somewhere`. This is called the <span style={{color: "lightgreen"}}>_anchor_</span>. Essentially what this is, is once you know where you're going, and the server has given you the information you need, the anchor links to a certain part of the information. So for example if you have a webpage it would be a specific part of the page.
+
+## So how do URLs take us to websites
+
+The key part is the domain name, the main of the address. This domain name points us to a (server or multiple servers) to get the website from. However, domain names are the human version of the addresses of servers, not the actual address. The actual addresses that we use to get to servers are called _IP address_. The IP bit is short for Internet Protocol. And IP addresses look a lot less nice than domain names, for example the IP address of google at the moment is 216.58.206.110, and that's just for me, Google's pretty big, and there's not just one server running it, there's lots. Now imagine having to remember that list of numbers instead of google.com. Yeah, that would suck.
+
+But how does our browser know that we mean 216.58.206.110 when we type in google.com? Our computers don't include a list of all domain names and their IP addresses, that would be crazy, you'd have to keep a list of 326.4 million things, with new ones added all the time, and the IP addresses the domain names pointing to changing as servers get moved around. Not very practical.
+
+Instead, there's a clever system called DNS, Domain Name System. The DNS is sort of a mesh of tons of special servers out there whose only job is to keep that crazy list of what IP addresses mean what domain names that we talked out about, and to keep the list up to date. What happens is your device, or your router, does know the IP address of a server that's part of the DNS, called a DNS server. There's multiple kinds of DNS servers, but you really don't need to know about that unless you want to dig more into it. As your device knows how to talk to a part of the DNS, it can then ask it for how to translate google.com into the list of numbers it needs. Magic.
+
+Once we have the IP address, we're onto actually trying to talk to the server itself.
+
+## Request-Response
+
+Finally, your browser requests the website from the server located at the IP address that the DNS server told it you meant when you asked for google.com, and the server at that IP address acknowledged your request, and looks at the path and parameters you sent (along with other stuff we'll cover later) and then it sends you page the website that you asked for.
+
+Phew, and that's all still pretty high level, there's tons more I've not gone into detail on here, but this is a good level for a bit of background knowledge.
