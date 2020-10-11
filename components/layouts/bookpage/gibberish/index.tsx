@@ -23,7 +23,14 @@ export default function GibberishPage(
       <div className={styles.wrapper}>
         <div className={styles.title}>{meta.book}</div>
         <div>
-          <div style={{ float: "right", paddingLeft: 50, paddingBottom: 20 }}>
+          <div
+            style={{
+              float: "right",
+              paddingLeft: 50,
+              paddingBottom: 30,
+              fontSize: "0.85em",
+            }}
+          >
             <TableOfContents />
           </div>
           <div>
