@@ -7,3 +7,30 @@ export const meta = {
   section: 2,
   createdAt: "05/05/20",
 };
+
+# HTML
+
+HTML stands for Hypertext Markup Language. That sounds kind of complicated, but let's break the two complicated bits down - I'm assuming you know what a language is.
+
+**Hypertext** - All this means is that it's text that is linked to other text somehow. You know the stuff you click on on webpages and it takes you to other pages? Those are hyperlinks, because they link the hypertext together.
+
+**Markup** - This just means the language is a bunch of different snippets (also known as codes, and tags) that tell something how to display something.
+
+HTML is pretty much just a way to write text that's linked together, with some extra bits to let something (a web browser most of the time) know how to display special bits and pieces.
+
+A super simple HTML document looks something like this:
+
+```html
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <p style="font-weight: bold;">This is an example!</p>
+  </body>
+</html>
+```
+
+Let's work through that.
+
+The bits you see in the angled brackets (`<` `>` those things), like `<html>` are called _tags_ (remember that bit we talked about for the markup bit of HTML), and you'll see that there's pairs of them, with other ones between the two matching ones, like the matching `<html>...</html>` on the first and last line, the first one in the pair we call the _opening tag_ and the last one the _closing tag_. This is how most tags work, although some of the time you can see things called _self closing_, or _unclosed_ tags - we'll get more into those later, but they'll look something like this: `<div />`. You build up a HTML document by nesting HTML tags, with either more HTML tags inside them (closed or regular), or text. That's it, nothing special, the worst bit of HTML is knowing about the tags and what you can do with them. We'll dig into all that a bit now.
