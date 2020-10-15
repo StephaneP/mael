@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
+import { FiEdit } from "react-icons/fi";
 import { Meta } from "../../../../util/staticProps/book";
 import getPostCard from "../../../../util/getPostCard";
 import TableOfContentsDataRaw from "./contents";
@@ -11,6 +12,7 @@ export default function GibberishPage(
   props: PropsWithChildren<{ meta: Meta }>
 ) {
   const { meta, children } = props;
+  const router = useRouter();
   return (
     <>
       <NextSeo
@@ -20,6 +22,12 @@ export default function GibberishPage(
           images: [{ url: getPostCard(`${meta.book} | ${meta.title}`) }],
         }}
       />
+      <a
+        className={styles.edit}
+        href={`https://github.com/maael/mael/tree/master/pages/${router.pathname}.mdx`}
+      >
+        <FiEdit size={25} />
+      </a>
       <div className={styles.wrapper}>
         <div className={styles.title}>{meta.book}</div>
         <div>
