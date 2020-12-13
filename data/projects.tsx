@@ -18,6 +18,45 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: "Tilted",
+    url: "https://tilted.mael.tech",
+    github: "https://github.com/maael/tilted",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/tilted.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/tilted.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel"],
+    description: (
+      <>
+        Pretty much Heads Up! with lists of video games, movies, and TV shows.
+        Uses web APIs like vibration and gyro.
+      </>
+    ),
+  },
+  {
+    title: "Bopsy",
+    url: "https://bopsy.mael.tech",
+    github: "https://github.com/maael/bopsy",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/bopsy.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/bopsy.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel"],
+    description: (
+      <>
+        A game to see if you can recognise the theme music of video games,
+        movies, or TV shows - or at least what a youtube search for the theme
+        comes up with.
+      </>
+    ),
+  },
+  {
     title: "Video Hydra",
     url: "https://vidhydra.mael.tech",
     github: "https://github.com/maael/hydratwitch",
