@@ -49,6 +49,18 @@
   text-decoration: underline;
 }
 
+.analytics {
+  color: var(--color-secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.1em;
+}
+
+.analyticsIcon {
+  margin-right: 0.3em;
+}
+
 .github {
   filter: var(--icon-invert);
 }

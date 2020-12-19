@@ -1,5 +1,7 @@
 import UseAnimations from "react-useanimations";
 import githubAnimation from "react-useanimations/lib/github";
+import { AiOutlineFire } from "react-icons/ai";
+import { FiActivity } from "react-icons/fi";
 import Browser from "../Browser";
 import styles from "./styles.module.css";
 import type { Project } from "../../data/projects";
@@ -11,7 +13,8 @@ export default function ProjectCard({
   description,
   github,
   url,
-}: Project) {
+  analytics,
+}: Project & { analytics?: { views: number; uniques: number } }) {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -32,6 +35,16 @@ export default function ProjectCard({
             />
           </a>
         </div>
+        {analytics ? (
+          <div className={styles.analytics}>
+            {analytics.views > 100 ? (
+              <AiOutlineFire className={styles.analyticsIcon} />
+            ) : (
+              <FiActivity className={styles.analyticsIcon} />
+            )}{" "}
+            {analytics.views} views this month
+          </div>
+        ) : null}
         <div className={styles.description}>{description}</div>
         <div className={styles.techContainer}>
           {tech.map((t) => (
