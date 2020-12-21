@@ -1,0 +1,29 @@
+name: Refresh projects analytics every 4 hours
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh-analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: yarn install
+      - run: yarn generate-analytics
+        env:
+          FATHOM_EMAIL: ${{ secrets.FATHOM_EMAIL }}
+          FATHOM_PASSWORD: ${{ secrets.FATHOM_PASSWORD }}
+      - name: Commit analytics changes
+        uses: EndBug/add-and-commit@v5
+        with:
+          author_name: Matthew Elphick
+          author_email: matt.a.elphy@gmail.com
+          message: 'chore: 🤖 Update analytics data'
+          add: 'data/analytics.json'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
