@@ -1,4 +1,5 @@
-import { NextApiHandler } from "next";
+import { promises as fs } from "fs";
+import { join } from "path";
 import chromium from "chrome-aws-lambda";
 import puppeteer from "puppeteer";
 
@@ -14,9 +15,6 @@ const siteIdMap: { [k: string]: number } = {
   "https://tem.tools": 21960,
   "https://vidhydra.mael.tech": 31172,
 };
-
-const wait = async (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 async function getCount(page: puppeteer.Page, idx: number) {
   let num = 0;
@@ -69,13 +67,13 @@ async function getData(instance: puppeteer.Browser) {
     for (const [name, id] of Object.entries(siteIdMap)) {
       data[name] = await getCounts(page, id);
     }
-  } catch {
-    // Do nothing
+  } catch (e) {
+    console.error("[getData]", e);
   }
   return data;
 }
 
-const handler: NextApiHandler = async (_req, res) => {
+async function run() {
   let instance: puppeteer.Browser;
   let data = {};
   try {
@@ -86,11 +84,20 @@ const handler: NextApiHandler = async (_req, res) => {
       headless: true,
       ignoreHTTPSErrors: true,
     });
-    data = await Promise.race([getData(instance), wait(8000)]);
+    data = await getData(instance);
+  } catch (e) {
+    console.error("[run]", e);
   } finally {
     if (instance) instance.close();
   }
-  res.json(data || {});
-};
+  await fs.writeFile(
+    join(__dirname, "..", "data", "analytics.json"),
+    JSON.stringify(
+      { analytics: data, updatedAt: new Date().toISOString() },
+      undefined,
+      2
+    )
+  );
+}
 
-export default handler;
+run();

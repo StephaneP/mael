@@ -11,7 +11,8 @@
     "prettier": "prettier --ignore-path .gitignore --write .",
     "lint": "eslint -c .eslintrc.js --ext .tsx,.ts .",
     "get-screenshots": "ts-node-script scripts/get-screenshots",
-    "generate-books-contents": "ts-node-script scripts/generate-books-contents"
+    "generate-books-contents": "ts-node-script scripts/generate-books-contents",
+    "generate-analytics": "dotenv-extended ts-node-script scripts/generate-analytics"
   },
   "husky": {
     "hooks": {
@@ -46,8 +47,7 @@
     "react-icons": "^3.11.0",
     "react-use-clipboard": "^1.0.0",
     "react-useanimations": "^2.0.5",
-    "reading-time": "^1.2.0",
-    "swr": "^0.3.9"
+    "reading-time": "^1.2.0"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.2",
