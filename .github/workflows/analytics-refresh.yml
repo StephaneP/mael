@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -32,8 +32,7 @@ jobs:
         with:
           author_name: Matthew Elphick
           author_email: matt.a.elphy@gmail.com
-          message: 'chore: 🤖 Update analytics data'
-          add: 'data/analytics.json'
+          message: "chore: 🤖 Update analytics data"
+          add: "data/analytics.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
