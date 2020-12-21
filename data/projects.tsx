@@ -18,6 +18,25 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: "Who was that?",
+    url: "https://whowas.mael.tech",
+    github: "https://github.com/maael/who-was",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/who-was.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/who-was.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel"],
+    description: (
+      <>
+        Safely check who played a character in a TV show or movie, without any
+        risk of spoilers, like how many episodes/seasons they&#39;re in.
+      </>
+    ),
+  },
+  {
     title: "Tilted",
     url: "https://tilted.mael.tech",
     github: "https://github.com/maael/tilted",
