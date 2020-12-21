@@ -18,6 +18,25 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: "Iono",
+    url: "https://iono.mael.tech",
+    github: "github.com/maael/iono",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/iono.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/iono.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel", "react native"],
+    description: (
+      <>
+        An app and a website, allowing sending push notifications to phones to
+        open deeplinks in other apps.
+      </>
+    ),
+  },
+  {
     title: "Who was that?",
     url: "https://whowas.mael.tech",
     github: "https://github.com/maael/who-was",
