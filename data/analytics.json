@@ -1,8 +1,8 @@
 {
   "analytics": {
     "https://bopsy.mael.tech": {
-      "uniques": 0,
-      "views": 0,
+      "uniques": 54,
+      "views": 65,
       "id": 38692
     },
     "https://dedupe.mael.tech": {
@@ -31,5 +31,5 @@
       "id": 31172
     }
   },
-  "updatedAt": "2020-12-26T08:20:45.894Z"
+  "updatedAt": "2020-12-26T12:22:58.133Z"
 }
