@@ -34,6 +34,9 @@ async function getCount(page: puppeteer.Page, idx: number) {
   return num;
 }
 
+const wait = async (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 async function getCounts(page: puppeteer.Page, id: number) {
   const data = { uniques: 0, views: 0, id };
   try {
@@ -41,6 +44,7 @@ async function getCounts(page: puppeteer.Page, id: number) {
       `https://app.usefathom.com/#/?range=last_30_days&site=${id}`
     );
     await page.waitForNavigation();
+    await wait(3000);
     const [uniques, views] = await Promise.all([
       getCount(page, 0),
       getCount(page, 1),
@@ -79,7 +83,7 @@ export default async function getAnalytics() {
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath,
-      headless: true,
+      headless: false,
       ignoreHTTPSErrors: true,
     });
     data = await getData(instance);
