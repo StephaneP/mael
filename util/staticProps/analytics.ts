@@ -44,7 +44,7 @@ async function getCounts(page: puppeteer.Page, id: number) {
       `https://app.usefathom.com/#/?range=last_30_days&site=${id}`
     );
     await page.waitForNavigation();
-    await wait(3000);
+    await wait(1000);
     const [uniques, views] = await Promise.all([
       getCount(page, 0),
       getCount(page, 1),
