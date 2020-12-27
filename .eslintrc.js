@@ -34,7 +34,7 @@ module.exports = {
     "jsx-a11y/anchor-is-valid": [0],
     "react/jsx-one-expression-per-line": [0],
     "react/require-default-props": [0],
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": ["error", { allow: ["info", "warn", "error"] }],
     "react/no-array-index-key": [0],
     "import/no-unresolved": [0],
     "global-require": [0],
