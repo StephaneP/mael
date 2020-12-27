@@ -83,7 +83,7 @@ export default async function getAnalytics() {
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath,
-      headless: false,
+      headless: true,
       ignoreHTTPSErrors: true,
     });
     data = await getData(instance);
