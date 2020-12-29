@@ -6,8 +6,8 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 50,
-      "views": 56,
+      "uniques": 51,
+      "views": 57,
       "id": 24899
     },
     "https://mael.tech": {
@@ -16,8 +16,8 @@
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 84,
-      "views": 319,
+      "uniques": 85,
+      "views": 323,
       "id": 21515
     },
     "https://tem.tools": {
@@ -31,5 +31,5 @@
       "id": 31172
     }
   },
-  "updatedAt": "2020-12-29T12:25:02.187Z"
+  "updatedAt": "2020-12-29T20:22:05.237Z"
 }
