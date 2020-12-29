@@ -6,8 +6,8 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 48,
-      "views": 52,
+      "uniques": 50,
+      "views": 55,
       "id": 24899
     },
     "https://mael.tech": {
@@ -21,8 +21,8 @@
       "id": 21515
     },
     "https://tem.tools": {
-      "uniques": 28,
-      "views": 149,
+      "uniques": 29,
+      "views": 150,
       "id": 21960
     },
     "https://vidhydra.mael.tech": {
@@ -31,5 +31,5 @@
       "id": 31172
     }
   },
-  "updatedAt": "2020-12-29T00:50:52.084Z"
+  "updatedAt": "2020-12-29T08:23:49.305Z"
 }
