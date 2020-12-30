@@ -18,6 +18,26 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    title: "Shorty",
+    url: "https://l.mael.tech",
+    github: "github.com/maael/gh-short-url",
+    images: {
+      web: {
+        defaultImage: require("../assets/projects/gh-short-url.png"),
+        defaultImageMime: "image/png",
+        webp: require("../assets/projects/gh-short-url.png?webp"),
+      },
+    },
+    tech: ["js", "typescript", "react", "nextjs", "vercel"],
+    description: (
+      <>
+        A link shortener, that stores shortened links as GitHub issues, and
+        tracks views as comments, and updates via a GitHub action to keep
+        redirects speedy.
+      </>
+    ),
+  },
+  {
     title: "Iono",
     url: "https://iono.mael.tech",
     github: "github.com/maael/iono",
