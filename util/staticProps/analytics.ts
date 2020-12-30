@@ -15,6 +15,7 @@ const siteIdMap: { [k: string]: number } = {
   "https://iono.mael.tech": 50463,
   "https://tilted.mael.tech": 50468,
   "https://whowas.mael.tech": 50465,
+  "https://l.mael.tech": 50470,
 };
 
 async function getCount(page: puppeteer.Page, idx: number) {
