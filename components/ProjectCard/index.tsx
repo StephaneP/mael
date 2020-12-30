@@ -42,7 +42,7 @@ export default function ProjectCard({
             ) : (
               <FiActivity className={styles.analyticsIcon} />
             )}{" "}
-            {analytics.views} views this month
+            {analytics.views} views in the last 30 days
           </div>
         ) : null}
         <div className={styles.description}>{description}</div>
