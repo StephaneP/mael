@@ -1,8 +1,8 @@
 {
   "analytics": {
     "https://bopsy.mael.tech": {
-      "uniques": 0,
-      "views": 0,
+      "uniques": 5,
+      "views": 24,
       "id": 38692
     },
     "https://dedupe.mael.tech": {
@@ -16,8 +16,8 @@
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 0,
-      "views": 0,
+      "uniques": 77,
+      "views": 280,
       "id": 21515
     },
     "https://tem.tools": {
@@ -51,5 +51,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2020-12-31T04:33:12.889Z"
+  "updatedAt": "2020-12-31T08:27:09.932Z"
 }
