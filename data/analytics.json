@@ -12,12 +12,12 @@
     },
     "https://mael.tech": {
       "uniques": 37,
-      "views": 125,
+      "views": 127,
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 77,
-      "views": 271,
+      "uniques": 80,
+      "views": 291,
       "id": 21515
     },
     "https://tem.tools": {
@@ -51,5 +51,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-01-01T08:25:04.631Z"
+  "updatedAt": "2021-01-01T12:25:39.311Z"
 }
