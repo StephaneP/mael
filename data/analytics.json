@@ -6,8 +6,8 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 50,
-      "views": 56,
+      "uniques": 49,
+      "views": 55,
       "id": 24899
     },
     "https://mael.tech": {
@@ -16,13 +16,13 @@
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 82,
-      "views": 302,
+      "uniques": 79,
+      "views": 298,
       "id": 21515
     },
     "https://tem.tools": {
-      "uniques": 30,
-      "views": 130,
+      "uniques": 31,
+      "views": 141,
       "id": 21960
     },
     "https://vidhydra.mael.tech": {
@@ -51,5 +51,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-01-01T20:20:46.733Z"
+  "updatedAt": "2021-01-02T00:52:53.258Z"
 }
