@@ -6,8 +6,8 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 49,
-      "views": 55,
+      "uniques": 50,
+      "views": 56,
       "id": 24899
     },
     "https://mael.tech": {
@@ -16,8 +16,8 @@
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 79,
-      "views": 299,
+      "uniques": 80,
+      "views": 304,
       "id": 21515
     },
     "https://tem.tools": {
@@ -36,8 +36,8 @@
       "id": 50463
     },
     "https://tilted.mael.tech": {
-      "uniques": 1,
-      "views": 1,
+      "uniques": 2,
+      "views": 2,
       "id": 50468
     },
     "https://whowas.mael.tech": {
@@ -51,5 +51,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-01-02T04:31:37.558Z"
+  "updatedAt": "2021-01-02T08:24:02.182Z"
 }
