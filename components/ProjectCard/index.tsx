@@ -14,7 +14,9 @@ export default function ProjectCard({
   github,
   url,
   analytics,
-}: Project & { analytics?: { views: number; uniques: number } }) {
+}: Project & {
+  analytics?: { views: number; uniques: number; requests: number };
+}) {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -37,12 +39,15 @@ export default function ProjectCard({
         </div>
         {analytics ? (
           <div className={styles.analytics}>
-            {analytics.views > 100 ? (
+            {analytics.views > 100 || analytics.requests > 100 ? (
               <AiOutlineFire className={styles.analyticsIcon} />
             ) : (
               <FiActivity className={styles.analyticsIcon} />
             )}{" "}
-            {analytics.views} views in the last 30 days
+            {new Intl.NumberFormat().format(
+              analytics.requests || analytics.views || 0
+            )}{" "}
+            {analytics.requests ? "requests" : "views"} in the last 30 days
           </div>
         ) : null}
         <div className={styles.description}>{description}</div>

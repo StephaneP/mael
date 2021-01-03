@@ -37,6 +37,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "fathom-client": "^3.0.0",
+    "isomorphic-fetch": "^3.0.0",
     "next": "^9.5.2",
     "next-optimized-images": "^2.6.2",
     "next-seo": "^4.7.3",
@@ -50,6 +51,7 @@
     "reading-time": "^1.2.0"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
     "@types/mdx-js__react": "^1.5.2",
     "@types/node": "^14.6.0",
     "@types/puppeteer": "^3.0.2",

@@ -1,9 +1,12 @@
 import chromium from "chrome-aws-lambda";
 import puppeteer from "puppeteer";
+import fetch from "isomorphic-fetch";
+import subDays from "date-fns/subDays";
+import formatDate from "date-fns/format";
 
 const FATHOM_BASE = "https://app.usefathom.com";
 
-const { FATHOM_EMAIL, FATHOM_PASSWORD } = process.env;
+const { FATHOM_EMAIL, FATHOM_PASSWORD, CLOUDFLARE_TOKEN } = process.env;
 
 const siteIdMap: { [k: string]: number } = {
   "https://bopsy.mael.tech": 38692,
@@ -79,7 +82,7 @@ async function getData(instance: puppeteer.Browser) {
   return data;
 }
 
-export default async function getAnalytics() {
+async function getFathomAnalytics() {
   let instance: puppeteer.Browser;
   let data = {};
   try {
@@ -96,5 +99,52 @@ export default async function getAnalytics() {
   } finally {
     if (instance) instance.close();
   }
-  return { analytics: data, updatedAt: new Date().toISOString() };
+  return data;
+}
+
+async function getCloudflareAnalytics() {
+  let count = 0;
+  try {
+    const thirtyDaysAgo = formatDate(subDays(new Date(), 30), "yyyy-MM-dd");
+    const requestString = JSON.stringify({
+      query: `{
+        viewer {
+          zones {
+            zoneTag
+            httpRequests1dGroups(limit: 1, filter: {date_gt:"${thirtyDaysAgo}"}) {
+              sum {
+                requests
+              }
+            }
+          }
+        }
+      }
+    `,
+    });
+    const res = await fetch("https://api.cloudflare.com/client/v4/graphql", {
+      headers: {
+        Authorization: `Bearer ${CLOUDFLARE_TOKEN}`,
+      },
+      method: "POST",
+      body: requestString,
+    });
+    const data = await res.json();
+    count = data.data.viewer.zones[0].httpRequests1dGroups[0].sum.requests;
+  } catch (e) {
+    console.error("[error]", e);
+    count = 0;
+  }
+  return {
+    "https://temtem-api.mael.tech": {
+      requests: count,
+      id: -1,
+    },
+  };
+}
+
+export default async function getAnalytics() {
+  const fathomData = await getFathomAnalytics();
+  const cloudflareData = await getCloudflareAnalytics();
+  const combined = { ...cloudflareData, ...fathomData };
+  return { analytics: combined, updatedAt: new Date().toISOString() };
 }
