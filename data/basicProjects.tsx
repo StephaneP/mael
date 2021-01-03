@@ -8,12 +8,12 @@ const projects: BasicProject[] = [
   {
     title: "Shorty",
     url: "https://l.mael.tech",
-    github: "github.com/maael/gh-short-url",
+    github: "https://github.com/maael/gh-short-url",
   },
   {
     title: "Iono",
     url: "https://iono.mael.tech",
-    github: "github.com/maael/iono",
+    github: "https://github.com/maael/iono",
   },
   {
     title: "Who was that?",
