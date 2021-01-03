@@ -10,18 +10,18 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 50,
-      "views": 55,
+      "uniques": 52,
+      "views": 59,
       "id": 24899
     },
     "https://mael.tech": {
-      "uniques": 38,
-      "views": 129,
+      "uniques": 39,
+      "views": 140,
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 78,
-      "views": 306,
+      "uniques": 79,
+      "views": 307,
       "id": 21515
     },
     "https://tem.tools": {
@@ -50,10 +50,10 @@
       "id": 50465
     },
     "https://l.mael.tech": {
-      "uniques": 2,
-      "views": 2,
+      "uniques": 3,
+      "views": 4,
       "id": 50470
     }
   },
-  "updatedAt": "2021-01-03T12:24:49.397Z"
+  "updatedAt": "2021-01-03T14:45:20.292Z"
 }
