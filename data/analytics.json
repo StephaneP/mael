@@ -36,8 +36,8 @@
       "id": 50463
     },
     "https://tilted.mael.tech": {
-      "uniques": 2,
-      "views": 2,
+      "uniques": 0,
+      "views": 0,
       "id": 50468
     },
     "https://whowas.mael.tech": {
@@ -46,10 +46,10 @@
       "id": 50465
     },
     "https://l.mael.tech": {
-      "uniques": 0,
-      "views": 0,
+      "uniques": 2,
+      "views": 2,
       "id": 50470
     }
   },
-  "updatedAt": "2021-01-03T04:32:12.059Z"
+  "updatedAt": "2021-01-03T08:26:11.435Z"
 }
