@@ -1,7 +1,11 @@
 .face {
-  margin: 0 auto;
   border-radius: 50%;
-  height: 150px;
+}
+
+.faceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 4vh;
   margin-bottom: 1vh;
 }
@@ -16,8 +20,12 @@
 
 .company {
   border-radius: 50%;
-  height: 150px;
-  margin: 0 auto;
+}
+
+.companyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .timelineContainer {

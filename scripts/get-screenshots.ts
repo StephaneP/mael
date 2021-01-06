@@ -24,7 +24,7 @@ async function run() {
         await page.goto(d.url, { waitUntil: "networkidle0", timeout: 60000 });
         await page.setViewport({ width: 1920, height: 1280 });
         await page.screenshot({
-          path: `./assets/projects/${name}.png`,
+          path: `./public/images/projects/${name}.png`,
           type: "png",
         });
         await page.close();

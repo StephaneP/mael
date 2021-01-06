@@ -1,6 +1,6 @@
+import Image from "next/image";
 import classnames from "classnames";
 import Header from "../components/Header";
-import Picture from "../components/Picture";
 import sharedStyles from "./shared.module.css";
 import styles from "./about.module.css";
 
@@ -12,13 +12,14 @@ export default function About() {
         className={classnames(sharedStyles.container, styles.containerBottom)}
       >
         <div>
-          <Picture
-            src={require("../public/images/me.jpg")}
-            alt="My face"
-            className={styles.face}
-            webp={require("../public/images/me.jpg?webp")}
-            mime="image/jpeg"
-          />
+          <div className={styles.faceContainer}>
+            <Image
+              className={styles.face}
+              height={150}
+              width={150}
+              src="/images/me.jpg"
+            />
+          </div>
           <div className={sharedStyles.contentHeader}>Who am I?</div>
           <p className={styles.p}>
             Hi, I’m Matt, I’m a full-stack developer who uses JavaScript and a
@@ -47,13 +48,15 @@ export default function About() {
             today.
           </p>
           <div className={styles.timelineContainer}>
-            <Picture
-              src={require("../assets/companies/threads-styling.png")}
-              alt="Clock Logo"
-              className={styles.company}
-              webp={require("../assets/companies/threads-styling.png?webp")}
-              mime="image/png"
-            />
+            <div className={styles.companyContainer}>
+              <Image
+                className={styles.company}
+                alt="Threads Styling Logo"
+                height={150}
+                width={150}
+                src="/images/companies/threads-styling.png"
+              />
+            </div>
             <div className={styles.timelineInfo}>
               <div className={styles.timelineTitle}>
                 <div className={styles.timelineTitleText}>Threads Styling</div>
@@ -85,13 +88,15 @@ export default function About() {
             </div>
           </div>
           <div className={styles.timelineContainer}>
-            <Picture
-              src={require("../assets/companies/mailonline.png")}
-              alt="Clock Logo"
-              className={styles.company}
-              webp={require("../assets/companies/mailonline.png?webp")}
-              mime="image/png"
-            />
+            <div className={styles.companyContainer}>
+              <Image
+                className={styles.company}
+                alt="MailOnline Logo"
+                height={150}
+                width={150}
+                src="/images/companies/mailonline.png"
+              />
+            </div>
             <div className={styles.timelineInfo}>
               <div className={styles.timelineTitle}>
                 <div className={styles.timelineTitleText}>Mailonline</div>
@@ -115,13 +120,15 @@ export default function About() {
             </div>
           </div>
           <div className={styles.timelineContainer}>
-            <Picture
-              src={require("../assets/companies/clock.png")}
-              alt="Clock Logo"
-              className={styles.company}
-              webp={require("../assets/companies/clock.png?webp")}
-              mime="image/png"
-            />
+            <div className={styles.companyContainer}>
+              <Image
+                className={styles.company}
+                alt="Clock Logo"
+                height={150}
+                width={150}
+                src="/images/companies/clock.png"
+              />
+            </div>
             <div className={styles.timelineInfo}>
               <div className={styles.timelineTitle}>
                 <div className={styles.timelineTitleText}>Clock Limited</div>
@@ -146,13 +153,15 @@ export default function About() {
             </div>
           </div>
           <div className={styles.timelineContainer}>
-            <Picture
-              src={require("../assets/companies/lboro-uni.png")}
-              alt="Clock Logo"
-              className={styles.company}
-              webp={require("../assets/companies/lboro-uni.png?webp")}
-              mime="image/png"
-            />
+            <div className={styles.companyContainer}>
+              <Image
+                className={styles.company}
+                alt="Loughborough University Logo"
+                height={150}
+                width={150}
+                src="/images/companies/lboro-uni.png"
+              />
+            </div>
             <div className={styles.timelineInfo}>
               <div className={styles.timelineTitle}>
                 <div className={styles.timelineTitleText}>Loughborough Uni</div>

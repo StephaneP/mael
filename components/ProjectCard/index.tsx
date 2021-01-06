@@ -21,7 +21,7 @@ export default function ProjectCard({
     <div className={styles.container}>
       <div className={styles.image}>
         <a href={url} className={styles.imageLink}>
-          <Browser src={images.web.defaultImage} webp={images.web.webp} />
+          <Browser src={images.web} />
         </a>
       </div>
       <div className={styles.info}>

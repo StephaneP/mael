@@ -7,11 +7,7 @@ export interface Project {
   description: ReactNode;
   tech: string[];
   images: {
-    web?: {
-      defaultImage: any;
-      defaultImageMime: string;
-      webp: any;
-    };
+    web?: string;
     mobile?: string;
   };
 }
@@ -22,11 +18,7 @@ const projects: Project[] = [
     url: "https://l.mael.tech",
     github: "github.com/maael/gh-short-url",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/gh-short-url.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/gh-short-url.png?webp"),
-      },
+      web: "/images/projects/gh-short-url.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -42,11 +34,7 @@ const projects: Project[] = [
     url: "https://iono.mael.tech",
     github: "github.com/maael/iono",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/iono.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/iono.png?webp"),
-      },
+      web: "/images/projects/iono.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "react native"],
     description: (
@@ -61,11 +49,7 @@ const projects: Project[] = [
     url: "https://whowas.mael.tech",
     github: "https://github.com/maael/who-was",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/who-was.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/who-was.png?webp"),
-      },
+      web: "/images/projects/who-was.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -80,11 +64,7 @@ const projects: Project[] = [
     url: "https://tilted.mael.tech",
     github: "https://github.com/maael/tilted",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/tilted.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/tilted.png?webp"),
-      },
+      web: "/images/projects/tilted.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -99,11 +79,7 @@ const projects: Project[] = [
     url: "https://bopsy.mael.tech",
     github: "https://github.com/maael/bopsy",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/bopsy.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/bopsy.png?webp"),
-      },
+      web: "/images/projects/bopsy.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -119,11 +95,7 @@ const projects: Project[] = [
     url: "https://vidhydra.mael.tech",
     github: "https://github.com/maael/hydratwitch",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/hydratwitch.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/hydratwitch.png?webp"),
-      },
+      web: "/images/projects/hydratwitch.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -141,11 +113,7 @@ const projects: Project[] = [
     url: "https://mael.tech",
     github: "https://github.com/maael/mael",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/mael.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/mael.png?webp"),
-      },
+      web: "/images/projects/mael.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "mdx"],
     description: (
@@ -160,11 +128,7 @@ const projects: Project[] = [
     url: "https://dedupe.mael.tech",
     github: "https://github.com/maael/dedupotron",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/dedupotron.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/dedupotron.png?webp"),
-      },
+      web: "/images/projects/dedupotron.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -180,11 +144,7 @@ const projects: Project[] = [
     url: "https://invocation.mael.tech/",
     github: "https://github.com/maael/invocation-game",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/invocation.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/invocation.png?webp"),
-      },
+      web: "/images/projects/invocation.png",
     },
     tech: ["js", "typescript", "phaser", "nextjs", "vercel"],
     description: (
@@ -199,11 +159,7 @@ const projects: Project[] = [
     url: "https://cvbanks.review/",
     github: "https://github.com/maael/coronavirus-banks",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/coronavirus-banks.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/coronavirus-banks.png?webp"),
-      },
+      web: "/images/projects/coronavirus-banks.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel"],
     description: (
@@ -221,11 +177,7 @@ const projects: Project[] = [
     url: "https://majority-plays.herokuapp.com/",
     github: "https://github.com/maael/majority-plays",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/majority-plays.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/majority-plays.png?webp"),
-      },
+      web: "/images/projects/majority-plays.png",
     },
     tech: [
       "js",
@@ -253,11 +205,7 @@ const projects: Project[] = [
     url: "https://nook.services",
     github: "https://github.com/maael/nook",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/nook.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/nook.png?webp"),
-      },
+      web: "/images/projects/nook.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "fauna", "aws"],
     description: (
@@ -275,11 +223,7 @@ const projects: Project[] = [
     url: "https://tem.tools",
     github: "https://github.com/maael/temtem",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/temtem.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/temtem.png?webp"),
-      },
+      web: "/images/projects/temtem.png",
     },
     tech: ["js", "typescript", "react", "nextjs", "vercel", "fauna"],
     description: (
@@ -295,11 +239,7 @@ const projects: Project[] = [
     url: "https://temtem-api.mael.tech",
     github: "https://github.com/maael/temtem-api",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/temtem-api.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/temtem-api.png?webp"),
-      },
+      web: "/images/projects/temtem-api.png",
     },
     tech: ["js", "typescript", "react", "circleci", "nextjs", "vercel"],
     description: (
@@ -316,11 +256,7 @@ const projects: Project[] = [
     url: "https://pocketcraft.trade",
     github: "https://github.com/maael/ffxivpocketcraft",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/pocketcraft.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/pocketcraft.png?webp"),
-      },
+      web: "/images/projects/pocketcraft.png",
     },
     tech: [
       "js",
@@ -346,11 +282,7 @@ const projects: Project[] = [
     url: "https://copycat.mael.xyz",
     github: "https://github.com/maael/copycat",
     images: {
-      web: {
-        defaultImage: require("../assets/projects/copycat.png"),
-        defaultImageMime: "image/png",
-        webp: require("../assets/projects/copycat.png?webp"),
-      },
+      web: "/images/projects/copycat.png",
     },
     tech: [
       "js",
