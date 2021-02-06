@@ -1,7 +1,7 @@
 {
   "analytics": {
     "https://temtem-api.mael.tech": {
-      "requests": 96523,
+      "requests": 91918,
       "id": -1
     },
     "https://bopsy.mael.tech": {
@@ -11,17 +11,17 @@
     },
     "https://dedupe.mael.tech": {
       "uniques": 47,
-      "views": 51,
+      "views": 52,
       "id": 24899
     },
     "https://mael.tech": {
-      "uniques": 23,
-      "views": 37,
+      "uniques": 21,
+      "views": 31,
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 61,
-      "views": 256,
+      "uniques": 60,
+      "views": 261,
       "id": 21515
     },
     "https://tem.tools": {
@@ -30,8 +30,8 @@
       "id": 21960
     },
     "https://vidhydra.mael.tech": {
-      "uniques": 3,
-      "views": 3,
+      "uniques": 2,
+      "views": 2,
       "id": 31172
     },
     "https://iono.mael.tech": {
@@ -55,5 +55,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-02-05T20:15:24.906Z"
+  "updatedAt": "2021-02-06T00:35:24.875Z"
 }
