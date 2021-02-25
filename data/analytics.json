@@ -1,7 +1,7 @@
 {
   "analytics": {
     "https://temtem-api.mael.tech": {
-      "requests": 90072,
+      "requests": 87445,
       "id": -1
     },
     "https://bopsy.mael.tech": {
@@ -20,13 +20,13 @@
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 64,
-      "views": 278,
+      "uniques": 63,
+      "views": 264,
       "id": 21515
     },
     "https://tem.tools": {
-      "uniques": 39,
-      "views": 142,
+      "uniques": 37,
+      "views": 139,
       "id": 21960
     },
     "https://vidhydra.mael.tech": {
@@ -45,8 +45,8 @@
       "id": 50468
     },
     "https://whowas.mael.tech": {
-      "uniques": 1,
-      "views": 1,
+      "uniques": 2,
+      "views": 2,
       "id": 50465
     },
     "https://l.mael.tech": {
@@ -55,5 +55,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-02-24T20:16:06.395Z"
+  "updatedAt": "2021-02-25T00:37:19.890Z"
 }
