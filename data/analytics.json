@@ -1,7 +1,7 @@
 {
   "analytics": {
     "https://temtem-api.mael.tech": {
-      "requests": 92049,
+      "requests": 92294,
       "id": -1
     },
     "https://bopsy.mael.tech": {
@@ -10,18 +10,18 @@
       "id": 38692
     },
     "https://dedupe.mael.tech": {
-      "uniques": 61,
-      "views": 68,
+      "uniques": 62,
+      "views": 69,
       "id": 24899
     },
     "https://mael.tech": {
-      "uniques": 20,
-      "views": 36,
+      "uniques": 21,
+      "views": 37,
       "id": 26489
     },
     "https://nook.services": {
-      "uniques": 93,
-      "views": 387,
+      "uniques": 94,
+      "views": 390,
       "id": 21515
     },
     "https://tem.tools": {
@@ -55,5 +55,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-03-15T12:25:22.678Z"
+  "updatedAt": "2021-03-15T16:32:12.372Z"
 }
