@@ -1,7 +1,7 @@
 {
   "analytics": {
     "https://temtem-api.mael.tech": {
-      "requests": 75517,
+      "requests": 75663,
       "id": -1
     },
     "https://bopsy.mael.tech": {
@@ -11,7 +11,7 @@
     },
     "https://dedupe.mael.tech": {
       "uniques": 41,
-      "views": 65,
+      "views": 67,
       "id": 24899
     },
     "https://mael.tech": {
@@ -55,5 +55,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-04-04T16:06:16.667Z"
+  "updatedAt": "2021-04-04T20:05:11.089Z"
 }
