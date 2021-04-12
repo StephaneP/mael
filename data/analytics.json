@@ -1,7 +1,7 @@
 {
   "analytics": {
     "https://temtem-api.mael.tech": {
-      "requests": 63757,
+      "requests": 63945,
       "id": -1
     },
     "https://bopsy.mael.tech": {
@@ -15,8 +15,8 @@
       "id": 24899
     },
     "https://mael.tech": {
-      "uniques": 24,
-      "views": 36,
+      "uniques": 25,
+      "views": 37,
       "id": 26489
     },
     "https://nook.services": {
@@ -55,5 +55,5 @@
       "id": 50470
     }
   },
-  "updatedAt": "2021-04-12T12:06:44.424Z"
+  "updatedAt": "2021-04-12T16:06:42.879Z"
 }
