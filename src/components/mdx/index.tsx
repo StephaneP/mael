@@ -106,7 +106,7 @@ const MdxCode: React.FC<
 
 const Preview: React.FC = ({ children }) => {
   return (
-    <div className="bg-gray-200 dark:bg-pink-200 flex justify-center items-center text-center rounded-t-md p-5 -mb-3 mx-1 dark:mx-0 border-solid border-gray-300 border-2 dark:border-pink-800">
+    <div className="bg-gray-200 dark:bg-pink-200 flex justify-center items-center text-center sm:rounded-t-md p-5 pb-6 -mb-4 mx-1 dark:mx-0 border-solid border-gray-300 border-t-2 sm:border-l-2 sm:border-r-2 dark:border-pink-800">
       {children}
     </div>
   );

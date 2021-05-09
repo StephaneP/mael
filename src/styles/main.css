@@ -55,7 +55,7 @@ h5 {
 .codeWrapper {
   border-color: #2a2734;
   background-color: #2a2734;
-  @apply my-3 sm:rounded-md border-2 border-solid dark:border-pink-900 overflow-hidden shadow-md relative;
+  @apply my-3 sm:rounded-md border-t-2 border-b-2 border-r-0 border-l-0 sm:border-r-2 sm:border-l-2 border-solid dark:border-pink-900 overflow-hidden shadow-md relative;
 }
 
 :not(pre) > code {
