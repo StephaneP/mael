@@ -19,7 +19,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#db2777" />
       </Head>
       <DefaultSeo {...SEO} />
-      <div className="max-h-full overflow-y-auto scrollbar-thin scrollbar-thumb-pink-600 scrollbar-track-gray-700">
+      <div className="max-h-full overflow-y-auto sm:scrollbar-thin sm:scrollbar-thumb-pink-600 sm:scrollbar-track-gray-700">
         <ThemeProvider>
           <Component {...pageProps} />
         </ThemeProvider>
