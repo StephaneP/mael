@@ -1,0 +1,42 @@
+export const styles = {
+  container: {
+    marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  btnContainer: { display: "flex", justifyContent: "center" },
+  button: {
+    appearance: "none",
+    backgroundColor: "var(--color-primary-bg)",
+    border: "none",
+    borderRadius: "5px",
+    color: "#ffffff",
+    cursor: "pointer",
+    fontWeight: "bold",
+    padding: "10px 20px",
+    textTransform: "uppercase",
+    userSelect: "none",
+    outline: "none",
+  },
+  events: {
+    margin: "10px",
+    display: "flex",
+    justifyContent: "center",
+    minHeight: "25px",
+    flexWrap: "wrap",
+  },
+  event: {
+    backgroundColor: "var(--color-code-bg)",
+    borderRadius: "2px",
+    display: "inline-block",
+    padding: "2px 5px",
+    margin: "2px",
+  },
+  eventSpacer: {
+    borderRadius: "2px",
+    display: "inline-block",
+    padding: "2px 5px",
+    margin: "2px",
+  },
+} as const;

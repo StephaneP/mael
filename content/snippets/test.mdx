@@ -1,0 +1,115 @@
+---
+title: Example snippet
+description: This is a snippet that will allow you to do a thing
+language: TS
+---
+
+For when you want to do a thing
+
+Inline thing goes `console.info('Hello World')` and block goes here:
+
+```ts showLineNumbers
+import * as React from "react";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```
+
+```tsx
+import * as React from "react";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```
+
+```tsx showLineNumbers
+import * as React from "react";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return (
+    <div className="bg-gray-200">
+      {children}
+      And even more content that's really really really really really really really
+      really really really really really really really really really long
+    </div>
+  );
+}
+```
+
+```tsx
+import * as React from "react";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return (
+    <div className="bg-gray-200">
+      {children}
+      And even more content that's really really really really really really really
+      really really really really really really really really really long
+    </div>
+  );
+}
+```
+
+```tsx line=6,9 showLineNumbers comment="Just highlight some things" title="component.tsx"
+import * as React from "react";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```
+
+```tsx line=1,8-10 showLineNumbers comment="Testing this thing" showCopy
+import * as __React__ from "__react__";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```
+
+```tsx line=1,8-10 showLineNumbers comment="Testing this thing" showCopy isCollapsible
+import * as __React__ from "__react__";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```
+
+import Example from "../../src/components/previews/Example.tsx";
+
+<Preview>
+  <Example />
+</Preview>
+
+```tsx line=1,8-10 showLineNumbers comment="Testing this thing" showCopy title="Example button"
+import * as __React__ from "__react__";
+
+/**
+ * This doesn't do much
+ */
+export default function Component({ children }: { children: ReactNode }) {
+  return <div className="bg-gray-200">{children}</div>;
+}
+```

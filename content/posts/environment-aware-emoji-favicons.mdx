@@ -1,0 +1,80 @@
+---
+  layout: "post"
+  title: "Environment aware emoji favicons"
+  description: Emojis are cool, and coming up with favicons ideas is tricky, what if we bring the two together?
+  tags: "react, nextjs"
+  createdAt: "03/01/21"
+---
+
+I make lots of small projects to try to solve small problems I have, and to learn new things. I think the best way to figure new things out is to try to solve a problem using them, rather than reading tons of tutorials and watching YouTube videos about the topic, though that works for some people, different things work best for different people.
+
+To help with this I made a [GitHub template repository](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/) for the basics I felt I wanted for a [Next.js](https://nextjs.org/) based project. You can find my template I use [here](https://github.com/maael/next-template) if you're interested. It helps lower the bar of jumping into a project, and makes sure the basis is a solid start, with all the basics already covered. If I had to setup [linting](https://eslint.org/) and [prettier](https://prettier.io/) and other things by hand every project, I might either get lazy and skip it (causing myself more work later on when I have to waste time figuring out dumb things linters save you from, or when I add them and have to go in and fix errors and warnings), or the bar to jump into solving a problem or trying something out might be too high, and I might not do something that otherwise could have been interesting. It's not just that I'm lazy (although that's part of it too), but as I code daily for a job, it's nice to lower the bar for myself to jump into and work on projects I think might help me, or be interesting.
+
+One of the parts that I did in the template for projects was to include a favicon - as I think favicons really make a project look more complete. But this presented a problem - I didn't want to waste time having to design a favicon on every new project - for one I'm terrible at design, and two, it takes a fair bit of time that I'd rather spend jumping into the problem or the code, not the trimmings around the edges.
+
+With some digging, I found that you could use SVG to make a favicon, and so then you could include text, and fortunately there's these great things called emoji's - so this opened the doors to easily having not terrible looking favicons, with something a bit like this:
+
+```ts
+import Head from "next/head";
+
+export default function EmojiFavicon({ emoji }: { emoji: string }) {
+  const isLocal = process.env.NODE_ENV === "development";
+  return (
+    <Head>
+      <link
+        rel="icon"
+        href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <text y=".9em" font-size="81">${emoji}</text>
+        </svg>`}
+      ></link>
+    </Head>
+  );
+}
+```
+
+which I could throw on any page like below to get an emoji favicon. Magical :sparkles:.
+
+```ts
+import EmojiFavicon from "../components/EmojiFavicon";
+
+export default function Page() {
+  return <EmojiFavicon emoji="✨" />;
+}
+```
+
+But then I saw [this tweet](https://twitter.com/JoshWComeau/status/1336440509292797954) on twitter from [Josh Comeau](https://twitter.com/JoshWComeau) about changing the favicon depending on your environment so you could easily tell what environment you were on.
+
+> [icon:✨|center] (By the way, you should definitely follow [Josh Comeau](https://twitter.com/JoshWComeau) on Twitter, or check out [his blog](https://www.joshwcomeau.com/) - it's all fun and interesting stuff.)
+
+The idea was great, because then you easily know whether you're testing on your local or production. I can't be the only person who's been sat staring at the screen slack jawed wondering why my obviously correct changes weren't working, only to find far too long later that I've been staring at production, not my local where the changes actually are, like a complete fool.
+
+It prompted us to make the change at my current work, [Threads Styling](https://github.com/threadsstyling). But we have a designer there who comes up with fancy favicons, and we did some colour changing in GIMP or something to make the new icon as a totally different image - again, taking more time than I'd like to waste when it's my own.
+
+While I'd been using the emoji favicons for a while, I hadn't done much SVG stuff before, so I had to spend a morning figuring it out, but after some trial and error, I ended up with changes to the `EmojiFavicon`, to make my own version of an environment aware favicon. Here's what I did.
+
+```ts
+import Head from "next/head";
+
+export default function EmojiFavicon({ emoji }: { emoji: string }) {
+  const isLocal = process.env.NODE_ENV === "development";
+  return (
+    <Head>
+      <link
+        rel="icon"
+        href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" ${
+          isLocal ? `style="filter: hue-rotate(90deg) opacity(50%);"` : ""
+        } viewBox="0 0 100 100">
+  <text y=".9em" font-size="81">${emoji}</text>
+  ${
+    isLocal
+      ? `<circle cx="80" cy="80" r="20" fill="rgb(65,105,225)" fill-opacity="0.8" />`
+      : ""
+  }
+</svg>`}
+      ></link>
+    </Head>
+  );
+}
+```
+
+This adds a small coloured circle in the bottom right, and hue rotates the whole favicon, while making it translucent as well. With these changes, it becomes a lot more obvious when I'm staring at the wrong environment. Now I just have to remember to check the favicon.

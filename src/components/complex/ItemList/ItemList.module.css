@@ -1,0 +1,7 @@
+.sectionContainer {
+  @apply w-full gap-6 sm:gap-4 flex flex-col;
+}
+
+.sectionHeader {
+  @apply text-yellow-500 dark:text-yellow-300 text-3xl filter drop-shadow-md;
+}

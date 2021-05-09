@@ -1,0 +1,263 @@
+---
+  layout: "post"
+  title: "Template Repository Usage GitHub Action"
+  description: My first time writing a GitHub Action, and I bring you on the journey with me.
+  tags: "github, learning"
+  createdAt: "09/09/20"
+---
+
+# The problem
+
+At my work, we started off with a written guideline doc, with opinions around tooling and practices when starting a new project. Over time though, it became repetitive to go between those guidelines and the new project, capturing all those things. So we decided to move to taking advantage of the [Repository Templates](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/) feature that GitHub had released, to speed up bootstrapping new projects.
+
+This worked great for us, and let us get productive with a new project right from the get go. Excellent.
+
+However, patterns and tooling evolve over time, as we try to leverage the best tooling available at the time, and as we become aware of it.
+
+We strive to keep our templates as up to date as possible, but then the older projects generated from the templates can miss out on these updates.
+
+And GitHub doesn't make it easy to find what projects have been generated from a template repisitory - at least at the time of writing this I'm not aware of any.
+
+Recently I've been dabbling with GitHub actions, and there's quite a few actions out there that update READMEs to include some kind of information, kept up to date automatically.
+
+So how about we solve our template repository with a GitHub action?
+
+# Investigating
+
+My first thought was to crack open [Insomnia](https://insomnia.rest) to see whether the GitHub API gives us a way to figure out what we need, either what template a repository was generated from, or what repositories have been generated from a template. While the second option was a bust, I found that in the GitHub API, repositories have a `templateRepository` relation, bingo.
+
+With this GraphQL query:
+
+```js Query
+query {
+  organization (login: "OrgHere") {
+    repositories (first: 100) {
+      nodes {
+        name
+        templateRepository {
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+I got back something like this:
+
+```js Response
+{
+  "data": {
+    "organization": {
+      "repositories": {
+        "nodes": [
+          {
+            "name": "repo1",
+            "templateRepository": null
+          },
+          {
+            "name": "repo2",
+            "templateRepository": {
+              "name": "templateRepo"
+            }
+          },
+          // And so on
+        ]
+      }
+    }
+  }
+}
+```
+
+You'd think if it's there in the API you'd be able to search it. Maybe one day.
+
+Anyway, that's great, because now we have a way to get what we need to know. We just have to get all the organisation repositories, and check what repositories have a template repo.
+
+# Creating the GitHub action
+
+I've never written a GitHub action before, so I took a look and found a good template repository to use as a basis for TypeScript actions, [@actions/typescript-action](https://github.com/actions/typescript-action).
+
+I hit the `Use this template` button, and took a look at what I got. If you head over to the README for the action you'll find more details about it all, but essentially it comes with a basic action to show logging, creating output, using input for actions, written in TypeScript that builds out to what you want to publish by compiling with [ncc](https://github.com/vercel/ncc), a cli to bundle up everything into one file.
+
+Next up was how to get the data I wanted from the GitHub API from inside the GitHub action. Taking a look through the [toolkits](https://github.com/actions/toolkit/blob/master/README.md#packages) available, I found the [@actions/github](https://github.com/actions/toolkit/tree/master/packages/github), which looked perfect, it should allow me to do the query I did previously, but authenticated in the context of where the action was running - allowing the access to the organizations repositories list that the action will need.
+
+My original approach with this was to try to use the methods that the toolkit makes available, as it's an [Octokit](https://octokit.github.io/rest.js/v18) client that it exposes. However, I had issues getting the `templateRepository` back from the API when doing it this way, and tried using the `.rest` method that the Octokit instance exposes, but had issues there too, so I ended up using the `.graphql` method to just fire off the same query we did previously, which got me what I wanted.
+
+I ended up with something like this to get the data:
+
+```ts
+// Before this I get the input information to use here
+const result: Response = await octokit.graphql(
+  `
+  query orgRepos($owner: String!, $afterCursor: String) {
+    organization(login: $owner) {
+      repositories(first: 100, after:$afterCursor, orderBy:{field:CREATED_AT, direction:DESC}) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          name
+          nameWithOwner
+          url
+          templateRepository {
+            name
+            owner {
+              login
+            }
+          }
+        }
+      }
+    }
+  }
+`,
+  {
+    owner: org,
+    afterCursor: nextPageCursor,
+  }
+);
+```
+
+A key thing to note about this though is that I had to set the preview tag for the template repository information - some GitHub API features are not accessible by default, and you have to flag to them that you want to opt in to them, and you do that like this for the Octokit instance:
+
+```ts
+const octokit = github.getOctokit(token, {
+  previews: ["baptiste"],
+});
+```
+
+`baptiste` here lets them know that we want the template repository information on our responses. You can read more about the GitHub API preview tags [here](https://docs.github.com/en/free-pro-team@latest/rest/overview/api-previews).
+
+This gets us our first page of results, however pages are limited to only 100 items long in the GitHub API - and we might not get all the repositories we want back in that initial 100.
+
+To solve this, we check whether we have a cursor for the next page on the response we get back from GitHub, and build up the full list of repositories before checking the template usage, stopping when we don't have a cursor for the next page - meaning we've hit the last page of results.
+
+```ts
+let items: Item[] = [];
+let nextPageCursor: string | null | undefined = null;
+
+do {
+  const result: Response = await octokit.graphql(
+    `
+    query orgRepos($owner: String!, $afterCursor: String) {
+      organization(login: $owner) {
+        repositories(first: 100, after:$afterCursor, orderBy:{field:CREATED_AT, direction:DESC}) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          nodes {
+            name
+            nameWithOwner
+            url
+            templateRepository {
+              name
+              owner {
+                login
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      owner: org,
+      afterCursor: nextPageCursor,
+    }
+  );
+  nextPageCursor = result.organization.repositories.pageInfo.hasNextPage
+    ? result.organization.repositories.pageInfo.endCursor
+    : undefined;
+
+  items = items.concat(result.organization.repositories.nodes);
+} while (nextPageCursor !== undefined);
+```
+
+Now we have the list of repositores and their template repository they were based off (if they were), we can just loop through and pull out ones were the template repository matches what we're looking for.
+
+Next up is the problem of writing this list back to the README, and committing it back to the repository.
+
+To make it flexible, we'll need a way of flagging where in the file we want to put the list, and then as long as we keep those markers, each time we need to update it, we can just replace everything between the start and end of that section.
+
+Luckily READMEs on GitHub allow HTML (to some degree), and so we can leverage HTML comments to mark this section, something like this:
+
+```md
+# README
+
+...content...
+
+<!-- TEMPLATE_LIST_START -->
+
+List of usage here
+
+<!-- TEMPLATE_LIST_END -->
+
+...content...
+```
+
+To start with, we'll just go to the README and add these where we want, with nothing between the tags, just a tiny bit of initial setup.
+
+So first off we'll read the existing README that we'll be updating, with
+
+```ts
+const baseDir = path.join(process.cwd(), core.getInput("cwd") || "");
+const readmePath = path.join(
+  baseDir,
+  core.getInput("readmePath") || "README.md"
+);
+const readmeContent = await fs.readFile(readmePath, {
+  encoding: "utf-8",
+});
+```
+
+To make sure the pathing all works as we expect, we use `process.cwd()` to build our path off of, and allow building up the path via inputs. Probably over doing it here, but flexibility and reusability is the name of the game. In my own experience, I appreciate actions I can tinker with via inputs more than very rigid ones.
+
+Once we have the README content, we can use some regex with `.replace` to overwrite the list portion with the new list information.
+
+```ts
+const updatedReadme = readmeContent.replace(
+  /<!-- TEMPLATE_LIST_START -->[\s\S]+<!-- TEMPLATE_LIST_END -->/,
+  `<!-- TEMPLATE_LIST_START -->\n${output}\n<!-- TEMPLATE_LIST_END -->`
+);
+```
+
+This regex actually took me longer than I thought, [as regex always does](https://xkcd.com/1171/). The key bit here is `[\s\S]+`, as regex usually doesn't work on multiple lines. `[\s\S]` however is a handy regex thing in some languages (luckily JavaScript is one of them) that gives us a character set that matches any characters, including line breaks.
+
+After that we just write back the README to the same place we got it from.
+
+```ts
+await fs.writeFile(readmePath, updatedReadme);
+```
+
+We're in the home stretch here, now we just need to commit and push it back if it's changed, as we don't want to commit blindly every time this runs, as the git history would just be full of empty/pointless commits, and if we didn't commit and push it back at all, then this would all be pointless.
+
+Fortunately this was pretty straightforward, as there's a package that lets us use git, aptly named [simple-git](https://www.npmjs.com/package/simple-git). So all we need to do is set that up with some user information so it knows who to commit as, add the README specifically, and then commit and push. Then we do all that only if the README content has changed from what we originally got (we could do some stuff like adding the README and seeing if git actually picked up changes, but just comparing the strings here is easier and gets us to the same place).
+
+```ts
+    if (readmeContent !== updatedReadme) {
+      core.info('Changes found, committing')
+      const git = simpleGit(baseDir)
+      await git.addConfig('user.email', authorEmail)
+      await git.addConfig('user.name', authorName)
+      await git.add(readmePath)
+      await git.commit(`docs: 📝 Updating template usage list`, undefined, {
+        '--author': `"${authorName} <${authorEmail}>"`
+      })
+      await git.push()
+      core.info('Committed')
+    } else {
+      core.info('No changes, skipping')
+    }
+  } catch (error) {
+    core.setFailed(error.message)
+  }
+```
+
+With that, the action was done!
+
+Then it was a simple case of follow the instructions on example TypeScript action README to publish the action and start using it - you can find the published action [here](https://github.com/marketplace/actions/template-repository-usage-action), and an example of how I use it in a GitHub workflow [here](https://github.com/maael/next-template/blob/main/.github/workflows/usage.yml).
+
+Since then I've done some tweaks and changes to it, the most useful of which was changing the GraphQL query to get the repository information to use `repositoryOwner` instead of `organization`, so that I can just pass in the `login` for either an organization or user without having to know what it is ahead of time, and get back a useful list. I used this to add a usage list to my [Next.js template repository](https://github.com/maael/next-template) to track usage, so if I make any changes as I learn new things, I can find places where I can port it back to.
+
+Having tried this out and seen what goes into making a GitHub action work, it's super handy to know how low the bar is to jump in and start writing reusable blocks to use in CI steps in a language I know.

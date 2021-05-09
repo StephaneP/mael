@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-gray-50 text-black dark:bg-gray-800 dark:text-white h-full scrollbar transition-colors;
+  font-family: "Open Sans", Helvetica, Arial;
+  font-display: swap;
+}
+
+#__next {
+  @apply h-full;
+}
+
+a {
+  @apply text-pink-600;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: all;
+  text-decoration-thickness: 0.1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply text-pink-600 px-3 sm:px-0;
+}
+
+/* Utility */
+
+.util-outer {
+  @apply flex flex-col items-center w-full pb-12 flex-1;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .util-invert {
+  filter: invert(0);
+}
+
+.dark .util-invert {
+  filter: invert(1);
+}
+
+/* Custom Code Block styling */
+.codeWrapper {
+  border-color: #2a2734;
+  background-color: #2a2734;
+  @apply my-3 sm:rounded-md border-2 border-solid dark:border-pink-900 overflow-hidden shadow-md relative;
+}
+
+:not(pre) > code {
+  @apply bg-pink-600 px-1 rounded-sm text-white;
+}
+
+pre {
+  position: relative;
+  display: block;
+}
+
+pre > code {
+  @apply px-10 pb-5 pt-12 sm:pt-5 overflow-y-auto scrollbar-thin max-w-70/100 md:max-w-91/100;
+}
+
+code > div[data-highlighted="false"] {
+  opacity: 0.3;
+}
+code > div[data-highlighted="true"] {
+  opacity: 1;
+}
+
+pre > code .highlight-word {
+  opacity: 1;
+  @apply bg-pink-400 hover:bg-pink-600 text-white p-1 rounded-sm cursor-help;
+}
+
+/* Markdown styles */
+
+.md h1 {
+  @apply text-3xl md:text-5xl;
+}
+
+.md h2 {
+  @apply text-2xl md:text-4xl;
+}
+
+.md h3 {
+  @apply text-xl md:text-3xl;
+}
+
+.md h4 {
+  @apply md:text-2xl;
+}
+
+.md h5 {
+  @apply md:text-xl;
+}
+
+.md :where(h1, h2, h3, h4, h5, h6) {
+  @apply pb-4;
+}
+
+.md :where(h1, h2, h3, h4, h5, h6):not(:first-child) {
+  @apply pt-10;
+}
+
+.md blockquote {
+  @apply bg-gray-700 p-5 mt-5 mb-5 sm:rounded-md text-white;
+}
+
+.md blockquote[data-align="center"] {
+  @apply text-center;
+}
+
+.md pre > code {
+  @apply w-full block;
+}
+
+.md ol {
+  counter-reset: olcounter;
+}
+.md ul {
+  @apply ml-6;
+}
+.md ol,
+.md ul {
+  @apply pl-2 py-2;
+}
+.md ol ol,
+.md ul ul {
+  @apply py-0;
+}
+.md ol li {
+  counter-increment: olcounter;
+}
+.md ol li:before {
+  content: counters(olcounter, ".") ". ";
+}
+.md ul li:before {
+  content: "⬧";
+  @apply -ml-3 relative -left-3;
+}
+.md ol li:before,
+.md ul li:before {
+  @apply text-yellow-300 font-bold;
+}
+.md ul li {
+  @apply my-3 list-inside;
+}
+.md ul li:first-child {
+  @apply mt-0;
+}
+.md ul li:last-child {
+  @apply mb-0;
+}
+.md ul,
+.md ol,
+.md p {
+  @apply px-5;
+}
+.md p {
+  @apply my-4;
+}
+
+/*
+Name:   Base2Tone-Evening Dark
+Author: by Bram de Haan, adapted from DuoTone themes by Simurai (http://simurai.com/projects/2016/01/01/duotone-themes)
+
+http://atelierbram.github.io/Base2Tone-prism/demo/evening/dark/
+Prism template for Base2Tone by Bram de Haan (https://github.com/atelierbram/Base2Tone-prism)
+Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
+*/
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: #2a2734;
+  color: #f9a8d4;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #ec4899;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #ec4899;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #f472b6;
+}
+
+.token.punctuation {
+  color: #f472b6;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.tag,
+.token.operator,
+.token.number {
+  color: #f59e0b;
+}
+
+.token.property,
+.token.function {
+  color: #ec4899;
+}
+
+.token.tag-id,
+.token.selector,
+.token.atrule-id {
+  color: #eeebff;
+}
+
+code.language-javascript,
+.token.attr-name {
+  color: #ec4899;
+}
+
+code.language-css,
+code.language-scss,
+.token.boolean,
+.token.string,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.language-scss .token.string,
+.style .token.string,
+.token.attr-value,
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.regex,
+.token.atrule {
+  color: #fde68a;
+}
+
+.token.placeholder,
+.token.variable {
+  color: #fde68a;
+}
+
+.token.deleted {
+  text-decoration: line-through;
+}
+
+.token.inserted {
+  border-bottom: 1px dotted #eeebff;
+  text-decoration: none;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.important {
+  color: #be185d;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+pre > code.highlight {
+  outline: 0.4em solid #db2777;
+  outline-offset: 0.4em;
+}
+
+/* overrides color-values for the Line Numbers plugin
+ * http://prismjs.com/plugins/line-numbers/
+ */
+.line-numbers .line-numbers-rows {
+  border-right-color: #363342;
+}
+
+.line-numbers-rows > span:before {
+  color: #363342;
+}
+
+/* overrides color-values for the Line Highlight plugin
+ * http://prismjs.com/plugins/line-highlight/
+ * alpha transparency in 8 digits hex notation coming to a browser near you soon:
+ * https://drafts.csswg.org/css-color/#hex-notation
+ */
+.line-highlight {
+  background: #e0914233;
+  background: linear-gradient(to right, #e0914233 70%, #e0914200);
+}

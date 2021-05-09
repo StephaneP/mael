@@ -1,0 +1,266 @@
+---
+  layout: "post"
+  title: "Learning Rust from a TypeScript perspective"
+  description: Pretty unstructured ramblings as I try to make sense of Rust.
+  tags: "rust, learning"
+  createdAt: "26/06/20"
+  draft: true
+---
+
+> [⚠️|center] Warning: This is just some incoherent thoughts on Rust as I try to learn it, it isn't much of a blog post
+
+## Learnings
+
+### Rust Structs are sort of JS Objects
+
+```rust
+// Rust_Struct
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
+let user1 = User {
+    email: String::from("someone@example.com"),
+    username: String::from("someusername123"),
+    active: true,
+    sign_in_count: 1,
+};
+```
+
+```js
+// JavaScript_Object
+const user1 = {
+  email: "someone@example.com",
+  username: "someusername123",
+  active: true,
+  sign_in_count: 1,
+};
+```
+
+But sort of aren't as they can have methods, so kind of similar to some form of class, except the first parameter of a Struct method is `self`, essentially `this` in JS land.
+
+```js
+function Rect({ height, width }) {
+  this.height = height;
+  this.width = width;
+}
+
+Rect.prototype.area = function () {
+  return this.width * this.height;
+};
+
+const rect = new Rect({ height: 20, width: 10 });
+console.info(rect.area());
+```
+
+```rust
+struct Rect {
+  height: u32
+  width: u32
+}
+
+impl Rect {
+  fn area (&self) -> u32 {
+    self.width * self.height
+  }
+}
+
+let rect = Rect {height: 20, width: 10};
+println!(rect.area());
+```
+
+### Rusts Field Init Shorthand is Object Property Value Shorthand in JS
+
+```rust
+// Rust_Field_Init_Shorthand
+let email = String::from("someone@example.com");
+let username = String::from("someusername123");
+let user1 = User {
+    email,
+    username,
+    active: true,
+    sign_in_count: 1,
+};
+```
+
+```js
+// JavaScript_Object_Property_Value_Shorthand
+const email = "someone@example.com";
+const username = "someusername123";
+const user1 = {
+  email,
+  username,
+  active: true,
+  sign_in_count: 1,
+};
+```
+
+### Rusts Struct Update Syntax is using Destructuring one object to create another
+
+```rust
+// Rust_Struct_Update_Syntax
+let user1 = User {
+    email: String::from("someone@example.com"),
+    username: String::from("someusername123"),
+    active: true,
+    sign_in_count: 1,
+};
+let user2 = User {
+    email: String::from("someone@example.com"),
+    username: String::from("someusername123"),
+    ...user1
+};
+```
+
+```js
+// JavaScript_Object_Destructuring
+const user1 = {
+  email: "someone@example.com",
+  username: "someusername123",
+  active: true,
+  sign_in_count: 1,
+};
+const user2 = {
+  ...user1,
+  email: "someone@example.com",
+  username: "someusername123",
+};
+```
+
+#### Differences
+
+**Order doesn't seem to matter for Rust Struct Update Syntax, while in JavaScript it's important.**
+
+```js
+const var1 = { a: 1, b: 2 };
+const var2 = { ...var1, a: 3 }; // { a: 3, b: 2 }
+const var3 = { a: 3, ...var1 }; // { a: 1, b: 2 }
+```
+
+The properties are assigned left to right, so the right most wins.
+
+### Rust `const` isn't like JS `const`
+
+Both are always immutable, however in JS they can be the result of function etc, something commuted at runtime, however in Rust, they can only be actually constant expressions.
+
+For example, in Rust you can't do this:
+
+```rust
+let a = "what";
+const c: String = a;
+```
+
+### `let mut` is sort of similar to `let`
+
+`let` in JavaScript marks something as mutable.
+
+### Variable shadowing is much more important with Rust - used as a way to declare transformations on otherwise immutable variables
+
+In JavaScript a shadowed variable just declaring a new variable with the same name as a previous variable. The new variable is said to _shadow_ the original, as the new variable is what is seen when used.
+
+```js
+let a = "first";
+// This `a` shadows the one above
+let a = "second";
+```
+
+With Rust however, shadowing has more to it. The important thing to know here is that by default variables in Rust are immutable, you opt in to making them mutable with the `let mut` syntax, like:
+
+```rust
+// This causes an error, as x is immutable
+let x = 5;
+x = 6;
+
+// We've told Rust `x` will be mutated with the `let mut`
+// So we don't get any errors here
+let mut x = 5;
+x = 6;
+```
+
+But if you do this, it means the variable is always mutable. Rust gives us a middle ground with shadowing, where shadowing allows us to essentially do a transformation on the original variable.
+
+It makes the variable mutable for the single `let` expression.
+
+And then after it, the variable is locked back up, and can no longer be mutated.
+
+```rust
+// This is fine
+let x = 5;
+let x = x + 1;
+
+// This will cause an error
+x = 7;
+```
+
+With this use of shadowing you can even change the variables type, something you can't do with the `let mut` syntax.
+
+```rust
+// This works
+let x = "what";
+let x = x.len();
+
+// This doesn't
+let x = "what";
+x = x.len();
+```
+
+### Rust Enums can contain any kind of data
+
+Rust enums allow the variants to store different types of data.
+
+```rust
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+```
+
+A sort of not really rough approximation of this in TypeScript would look like this:
+
+```ts
+enum EMessage {
+  Quit,
+  Move,
+  Write,
+  ChangeColour,
+}
+
+const Message = {
+  [EMessage.Quit]: (data: void) => data,
+  [EMessage.Move]: (data: { x: number; y: number }) => data,
+  [EMessage.Write]: (data: string) => data,
+  [EMessage.ChangeColour]: (data: [number, number, number]) => data,
+};
+
+Message[EMessage.Move]({ x: 1, y: 2 });
+```
+
+You can add methods to Rust enums, just like structs:
+
+```rust
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+impl Message {
+    fn call(&self) {
+        let result = match self {
+            Self::Quit => 0,
+            Self::Move {x: _, y: _} => 1,
+            Self::Write(_) => 2,
+            Self::ChangeColor(_, _, _) => 3
+        };
+        println!("Got: {}", result);
+    }
+}
+
+let m = Message::Write(String::from("hello"));
+m.call();
+```
