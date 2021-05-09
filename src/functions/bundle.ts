@@ -8,15 +8,7 @@ import rehypeHighlightCode from "./mdx-plugins/rehype-highlight-code";
 import rehypeMetaAttribute from "./mdx-plugins/rehype-meta-attribute";
 import rehypeContentAttribute from "./mdx-plugins/rehype-content-attribute";
 import rehypeBlockquoteMeta from "./mdx-plugins/rehype-blockquote-meta";
-
-export const typeMapping = {
-  post: "posts",
-  project: "projects",
-  job: "jobs",
-  book: "books",
-  snippet: "snippets",
-  misc: "misc",
-};
+export { typeMapping } from "../util/content";
 
 if (process.platform === "win32") {
   process.env.ESBUILD_BINARY_PATH = path.join(
