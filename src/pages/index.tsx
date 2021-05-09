@@ -73,7 +73,11 @@ export default function Page({
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      projects: (await getContentItems("project", { includeCode: true }))
+      projects: (
+        await getContentItems<{ frontmatter: { index?: number } }>("project", {
+          includeCode: true,
+        })
+      )
         .sort(
           (a, b) =>
             (a.frontmatter.index || Infinity) -
