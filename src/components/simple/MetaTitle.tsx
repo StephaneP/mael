@@ -1,12 +1,13 @@
 import { NextSeo } from "next-seo";
 import getPostCard from "../../util/getPostCard";
 
-export default function MetaCard({ title }: { title: string }) {
+export default function MetaCard({ title = "" }: { title: string }) {
+  const fullTitle = ["Matt Elphick", title].filter(Boolean).join(" | ");
   return (
     <NextSeo
-      title={`Matt Elphick | ${title}`}
+      title={fullTitle}
       openGraph={{
-        title: `Matt Elphick | ${title}`,
+        title: fullTitle,
         images: [{ url: getPostCard(title) }],
       }}
     />

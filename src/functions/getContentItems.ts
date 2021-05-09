@@ -1,22 +1,38 @@
-import { promises as fs } from "fs";
+import { promises as fs, Stats } from "fs";
 import path from "path";
+import recursive from "recursive-readdir";
 import bundle, { typeMapping } from "./bundle";
 
-export default async function getContentItems(
+function recursiveIgnore(file: string, _stats: Stats) {
+  const info = path.parse(file);
+  return info.base.startsWith(".");
+}
+
+async function getRecursiveDir(rootDir: string) {
+  return recursive(rootDir, [recursiveIgnore]);
+}
+
+export default async function getContentItems<T = unknown>(
   type: "post" | "book" | "project" | "snippet" | "job" | "misc",
   options: {
     includeCode?: boolean;
+    recursive?: boolean;
   } = {}
-) {
+): Promise<T[]> {
   const rootDir = path.join(process.cwd(), "content");
   const contentRootDir = path.join(rootDir, typeMapping[type] || "");
-  const entries = await fs.readdir(contentRootDir, { withFileTypes: true });
+  const entries = await (options.recursive
+    ? getRecursiveDir(contentRootDir)
+    : fs.readdir(contentRootDir, { withFileTypes: true }));
   const embellishedEntries = (
     await Promise.all(
       entries.map(async (entry) => {
-        if (entry.isDirectory()) return;
-        if (entry.name.startsWith(".")) return;
-        const contentPath = path.join(contentRootDir, entry.name);
+        if (typeof entry !== "string" && entry.isDirectory()) return;
+        if (typeof entry !== "string" && entry.name.startsWith(".")) return;
+        const contentPath =
+          typeof entry !== "string"
+            ? path.join(contentRootDir, entry.name)
+            : entry;
         const result = await bundle(contentPath);
         const uri = contentPath.replace(rootDir, "");
         const nameWithNoExt = `${uri.replace(/\.mdx?$/, "")}`;
@@ -34,5 +50,5 @@ export default async function getContentItems(
       })
     )
   ).filter(Boolean);
-  return embellishedEntries;
+  return embellishedEntries as T[];
 }
