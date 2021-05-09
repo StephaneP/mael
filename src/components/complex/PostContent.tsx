@@ -10,7 +10,10 @@ export default function Post({
   code: string;
   frontmatter: { title: string; description: string };
 }) {
-  const Component = React.useMemo(() => getMDXComponent(code) || null, [code]);
+  const Component = React.useMemo(() => {
+    global.process = { env: {}, ...global.process };
+    return getMDXComponent(code) || null;
+  }, [code]);
   return (
     <>
       <Head>

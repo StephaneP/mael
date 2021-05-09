@@ -44,6 +44,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       .replace(`/book/${bookName}/`, "")
       .split("/")
       .shift();
+    if (isNaN(parseInt(chapter, 10))) {
+      return acc;
+    }
     return {
       ...acc,
       [chapter]: {
