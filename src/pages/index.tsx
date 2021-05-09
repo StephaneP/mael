@@ -71,7 +71,6 @@ export default function Page({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.info("books", await getContentItems("book"));
   return {
     props: {
       projects: (await getContentItems("project", { includeCode: true }))
