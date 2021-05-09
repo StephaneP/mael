@@ -1,0 +1,20 @@
+---
+title: Postgres short snippets
+description: This is a snippet that contains handy postgres snippets.
+language: SQL
+---
+
+```sql comment="Find all superusers"
+SELECT * FROM pg_user WHERE usesuper = true;
+```
+
+```sql comment="Find name of current user"
+SELECT current_user;
+```
+
+```sql comment="List all triggers"
+SELECT pg_namespace.nspname, pg_class.relname, pg_trigger.*
+FROM pg_trigger
+JOIN pg_class ON pg_trigger.tgrelid = pg_class.oid
+JOIN pg_namespace ON pg_namespace.oid = pg_class.relnamespace
+```
