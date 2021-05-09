@@ -1,7 +1,7 @@
 import getPostCard from "./util/getPostCard";
 
-const title = "Matt Elphick | Technical Lead";
-const description = "Technical Lead mainly messing around with JavaScript.";
+const title = "Matt Elphick";
+const description = "Just a guy messing around with JavaScript.";
 const url = "https://mael.tech/";
 
 export default {
