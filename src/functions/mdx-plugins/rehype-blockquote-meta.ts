@@ -15,7 +15,7 @@ function handleBlockquote(code) {
     })
     .replace("<blockquote>", "")
     .replace("</blockquote>", "")
-    .replace(/<\/p>$/, "");
+    .replace(/<\/p>\s*$/, "");
   const properties: { [k: string]: string } = {};
   propertiesStr.split("|").forEach((i) => {
     if (i === "center") {

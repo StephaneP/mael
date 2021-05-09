@@ -92,7 +92,7 @@ export default function PageHeader() {
                 "sm:hidden flex-1"
               )}
             >
-              Home
+              <HomeIcon className="w-8 h-8 sm:w-6 sm:h-6" />
             </a>
           </Link>
           <div className="hidden sm:flex flex-row w-full justify-between max-w-4xl">
