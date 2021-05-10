@@ -13,7 +13,7 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Open Sans"
+          href="https://fonts.googleapis.com/css2?family=Open Sans&display=swap"
           rel="stylesheet"
         />
         <meta name="theme-color" content="#db2777" />
