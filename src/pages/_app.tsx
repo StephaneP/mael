@@ -14,9 +14,9 @@ function App({ Component, pageProps, router }: AppProps) {
     function handleChange() {
       if (scrollableEl.current) scrollableEl.current.scrollTo(0, 0);
     }
-    router.events.on("routeChangeComplete", handleChange);
+    router.events.on("routeChangeStart", handleChange);
     return () => {
-      router.events.off("routeChangeComplete", handleChange);
+      router.events.off("routeChangeStart", handleChange);
     };
   });
   return (
